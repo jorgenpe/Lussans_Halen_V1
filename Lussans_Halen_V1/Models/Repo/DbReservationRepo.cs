@@ -2,29 +2,29 @@
 
 namespace Lussans_Halen_V1.Models.Repo
 {
-    public class DbDishRepo : IDishRepo
+    public class DbReservationRepo : IReservationRepo
     {
-        public Dish Create(Dish dish)
+        public Reservation Create(Reservation reservation)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Delete(Dish dish)
+        public bool Delete(Reservation reservation)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<Dish> Read()
+        public List<Reservation> Read()
         {
             throw new System.NotImplementedException();
         }
 
-        public Dish Read(int id)
+        public Reservation Read(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Update(Dish dish)
+        public bool Update(Reservation reservation)
         {
             throw new System.NotImplementedException();
         }

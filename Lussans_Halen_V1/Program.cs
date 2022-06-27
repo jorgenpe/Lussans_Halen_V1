@@ -3,9 +3,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lussans_Halen_V1.Models;
+using Lussans_Halen_V1.Data;
 
 namespace Lussans_Halen_V1
 {
@@ -13,7 +17,14 @@ namespace Lussans_Halen_V1
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            CreateDbIfNotExists(host);
+
+            host.Run();
+
+
+            //CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -22,5 +33,29 @@ namespace Lussans_Halen_V1
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+
+        private static void CreateDbIfNotExists(IHost host)
+        {
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    LussansDbContext context = services.GetRequiredService<LussansDbContext>();
+                    RoleManager<IdentityRole> roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var userManager = services.GetRequiredService<UserManager<AccountPerson>>();
+
+                    DbInitializer.InitializeAsync(context, roleManager, userManager).Wait();
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while creating the DB.");
+                }
+            }
+        }
     }
 }

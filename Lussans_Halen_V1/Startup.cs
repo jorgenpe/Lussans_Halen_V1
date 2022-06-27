@@ -9,6 +9,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Lussans_Halen_V1.Data;
+using Lussans_Halen_V1.Models;
+using Lussans_Halen_V1.Models.Repo;
+using Lussans_Halen_V1.Models.Service;
+using Lussans_Halen_V1.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Lussans_Halen_V1
 {
@@ -27,6 +33,15 @@ namespace Lussans_Halen_V1
             services.AddDbContext<LussansDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+
+
+            services.AddScoped<IDishRepo, DbDishRepo>();
+            services.AddScoped<IDishService, DishService>();
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

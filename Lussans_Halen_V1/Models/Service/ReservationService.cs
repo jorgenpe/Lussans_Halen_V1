@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace Lussans_Halen_V1.Models.Service
 {
-    public class AccessoriesService : IAccessories
+    public class ReservationService : IReservation
     {
-        public Accessory Add(CreateAllergyViewModel accessory)
+        public Reservation Add(CreateReservationViewModel reservation)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<Accessory> All()
+        public List<Reservation> All()
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Edit(int id, CreateAccessoriesViewModel accessory)
+        public bool Edit(int id, CreateReservationViewModel reservation)
         {
             throw new System.NotImplementedException();
         }
 
-        public Accessory FindById(int id)
+        public Reservation FindById(int id)
         {
             throw new System.NotImplementedException();
         }
@@ -30,7 +30,7 @@ namespace Lussans_Halen_V1.Models.Service
             throw new System.NotImplementedException();
         }
 
-        public List<Accessory> Search(string search)
+        public List<Reservation> Search(string search)
         {
             throw new System.NotImplementedException();
         }
