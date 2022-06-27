@@ -16,13 +16,13 @@ namespace Lussans_Halen_V1.Models
         public decimal DishPrice { get; set; }
         public string MenuTyp { get; set; }
 
-        [ForeignKey("Accessories")]
-        public int AccessoriesId { get; set; }
-        public string Accessories { get; set; }
+        [ForeignKey("Accessory")]
+        public int AccessoryId { get; set; }
+        public Accessory AccessoryName { get; set; }
 
-        [ForeignKey("Allergy")]
-        public int AllergyId { get; set; }
-        public string AllergyInfo { get; set; }
+        //[ForeignKey("Allergy")]
+       //public int AllergyId { get; set; }
+        public Allergy AllergyInfo { get; set; }
 
     }
 }

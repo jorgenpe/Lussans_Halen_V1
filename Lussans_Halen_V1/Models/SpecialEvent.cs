@@ -8,12 +8,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lussans_Halen_V1.Models
 {
-    public class Accessories
+    public class SpecialEvent
     {
         [Key]
-        public int AccessoriesId { get; set; }
-        public string AccessoriesName { get; set; }
-
-        public List<Dish> dishes { get; set; }
+        public int SpecialEventsId { get; set; }
+        public string SpecialEventsInfo { get; set; }
     }
 }

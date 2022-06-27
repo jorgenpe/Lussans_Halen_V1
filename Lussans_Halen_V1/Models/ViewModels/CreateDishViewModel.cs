@@ -27,7 +27,7 @@ namespace Lussans_Halen_V1.Models.ViewModels
         public int AllergyId { get; set; }
         public string AllergyInfo { get; set; }
 
-        public List<Accessories> AccessoriesList { get; set; }
+        public List<Accessory> AccessoriesList { get; set; }
 
     }
 }
