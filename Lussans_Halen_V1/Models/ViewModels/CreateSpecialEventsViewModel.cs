@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lussans_Halen_V1.Models.ViewModels
 {
-    public class CreateAccessoriesViewModel
+    public class CreateSpecialEventsViewModel
     {
-
-        public int AccessoriesId { get; set; }
-        public string AccessoriesName { get; set; }
-
-        public List<Dish> dishes { get; set; }
+        public int CreateSpecialEventsId { get; set; }
+        public string CreateSpecialEventsName { get; set; }
     }
 }

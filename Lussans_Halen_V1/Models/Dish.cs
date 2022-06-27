@@ -13,7 +13,8 @@ namespace Lussans_Halen_V1.Models
         [Key]
         public int Id { get; set; }
         public string DishName { get; set; }
-        public int DishPrice { get; set; }
+        public decimal DishPrice { get; set; }
+        public string MenuTyp { get; set; }
 
         [ForeignKey("Accessories")]
         public int AccessoriesId { get; set; }
