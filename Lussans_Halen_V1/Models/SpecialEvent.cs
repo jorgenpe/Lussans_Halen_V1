@@ -12,6 +12,7 @@ namespace Lussans_Halen_V1.Models
     {
         [Key]
         public int SpecialEventsId { get; set; }
-        public string SpecialEventsInfo { get; set; }
+        public string SpecialEventsInfoName { get; set; }
+        public string SpecialEventsDiscription { get; set; }
     }
 }

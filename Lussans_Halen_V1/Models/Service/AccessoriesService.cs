@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Lussans_Halen_V1.Models.Service
 {
-    public class AccessoriesService : IAccessories
+    public class AccessoriesService : IAccessoriesService
     {
         public Accessory Add(CreateAllergyViewModel accessory)
         {

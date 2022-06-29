@@ -10,7 +10,7 @@ namespace Lussans_Halen_V1.Models.ViewModels
     public class CreateDishViewModel
     {
        
-        public int Id { get; set; }
+        public int DishId { get; set; }
         [Required]
         [StringLength(255)]
         public string DishName { get; set; }

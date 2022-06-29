@@ -3,7 +3,7 @@ using Lussans_Halen_V1.Models.ViewModels;
 
 namespace Lussans_Halen_V1.Models.Service
 {
-    public interface IAccessories
+    public interface IAccessoriesService
     {
         Accessory Add(CreateAllergyViewModel accessory);
         List<Accessory> All();

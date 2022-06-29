@@ -37,9 +37,36 @@ namespace Lussans_Halen_V1
 
             services.AddScoped<IDishRepo, DbDishRepo>();
             services.AddScoped<IDishService, DishService>();
+            services.AddScoped<IAccessoriesRepo, DbAccessoriesRepo>();
+            services.AddScoped<IAccessoriesService, AccessoriesService>();
+            services.AddScoped<IAllergyRepo, DbAllergyRepo>();
+            services.AddScoped<IAllergyService, AllergyService>();
+            services.AddScoped<IReservationRepo, DbReservationRepo>();
+            services.AddScoped<IReservationService, ReservationService>();
+            services.AddScoped<ISpecialEventsRepo, DbSpecialEventsRepo>();
+            services.AddScoped<ISpecialEventsService, SpecialEventsService>();
+
+            services.AddDistributedMemoryCache();
 
 
 
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            services.AddMvc();
+
+            // //Will be used later maybe
+            services.AddMvc().AddRazorRuntimeCompilation();
+            services.AddRazorPages();
+
+
+            services.AddIdentity<AccountPerson, IdentityRole>()
+                .AddEntityFrameworkStores<LussansDbContext>()
+                .AddDefaultTokenProviders();
 
 
         }

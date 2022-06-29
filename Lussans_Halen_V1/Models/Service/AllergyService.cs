@@ -1,38 +1,76 @@
 ﻿using Lussans_Halen_V1.Models.ViewModels;
+using Lussans_Halen_V1.Models.Repo;
 using System.Collections.Generic;
 
 namespace Lussans_Halen_V1.Models.Service
 {
     public class AllergyService : IAllergyService
     {
+        private readonly IAllergyRepo _allergyRepo;
+
+        public AllergyService(IAllergyRepo allergyRepo) 
+        { 
+            _allergyRepo = allergyRepo; 
+        }
+
         public Allergy Add(CreateAllergyViewModel allergy)
         {
-            throw new System.NotImplementedException();
+            Allergy _allergy = new Allergy() { AllergyId = 0, AllergyInfoName = allergy.AllergyInfoName, AllergyInfo = allergy.AllergyInfo,
+                DishId = allergy.DishId, DishName = allergy.DishName };
+
+            _allergyRepo.Create(_allergy);
+
+            return _allergy;
         }
 
         public List<Allergy> All()
         {
-            throw new System.NotImplementedException();
+            if(_allergyRepo != null)
+            {
+                return _allergyRepo.Read();
+            }
+            return null;
         }
 
         public bool Edit(int id, CreateAllergyViewModel allergy)
         {
-            throw new System.NotImplementedException();
+            Allergy _allergy = new Allergy();
+
+            _allergy.AllergyId = id;
+            _allergy.AllergyInfoName = allergy.AllergyInfoName;
+            _allergy.AllergyInfo = allergy.AllergyInfo;
+            _allergy.DishId = allergy.DishId;
+            _allergy.DishName = allergy.DishName;
+
+            return _allergyRepo.Update(_allergy);
         }
 
         public Allergy FindById(int id)
         {
-            throw new System.NotImplementedException();
+            return _allergyRepo.Read(id);
         }
 
         public bool Remove(int id)
         {
-            throw new System.NotImplementedException();
+            return _allergyRepo.Delete(FindById(id));
         }
 
         public List<Allergy> Search(string search)
         {
-            throw new System.NotImplementedException();
+            List<Allergy> _allergies = new List<Allergy>();
+
+            foreach(Allergy allergy in _allergyRepo.Read())
+            {
+                if(allergy.DishName.DishName == search) 
+                { 
+                    _allergies.Add(allergy); 
+                }else if(allergy.AllergyInfoName == search) 
+                { 
+                    _allergies.Add(allergy); 
+                }
+            }
+
+            return _allergies;
         }
     }
 }

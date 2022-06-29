@@ -8,7 +8,8 @@ namespace Lussans_Halen_V1.Models.ViewModels
 {
     public class CreateSpecialEventsViewModel
     {
-        public int CreateSpecialEventsId { get; set; }
-        public string CreateSpecialEventsName { get; set; }
+        public int SpecialEventsId { get; set; }
+        public string SpecialEventsName { get; set; }
+        public string SpecialEventsDiscription { get; set; }
     }
 }

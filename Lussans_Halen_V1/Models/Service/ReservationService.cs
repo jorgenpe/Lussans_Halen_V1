@@ -1,38 +1,69 @@
 ﻿using Lussans_Halen_V1.Models.ViewModels;
+using Lussans_Halen_V1.Models.Repo;
 using System.Collections.Generic;
 
 namespace Lussans_Halen_V1.Models.Service
 {
-    public class ReservationService : IReservation
+    public class ReservationService : IReservationService
     {
+        private readonly IReservationRepo _reservationRepo;
+
+        public ReservationService(IReservationRepo reservationRepo)
+        {
+            _reservationRepo = reservationRepo;
+        }
+
         public Reservation Add(CreateReservationViewModel reservation)
         {
-            throw new System.NotImplementedException();
+            Reservation newReservation = new Reservation() { ReservationId = 0, ReservationName = reservation.ReservationName};
+
+            _reservationRepo.Create(newReservation);
+            return newReservation;
+
         }
 
         public List<Reservation> All()
         {
-            throw new System.NotImplementedException();
+            if(_reservationRepo != null)
+            {
+                return _reservationRepo.Read();
+            }
+            return null;
+            
         }
 
         public bool Edit(int id, CreateReservationViewModel reservation)
         {
-            throw new System.NotImplementedException();
+            Reservation reservationToUpdate = new Reservation();
+            reservationToUpdate.ReservationId = id;
+            reservationToUpdate.ReservationName = reservation.ReservationName;
+            reservationToUpdate.ReservationDescription = reservation.ReservationDescription;
+
+           return _reservationRepo.Update(reservationToUpdate);
         }
 
         public Reservation FindById(int id)
         {
-            throw new System.NotImplementedException();
+            return _reservationRepo.Read(id);
         }
 
         public bool Remove(int id)
         {
-            throw new System.NotImplementedException();
+            return _reservationRepo.Delete(FindById(id));
         }
 
         public List<Reservation> Search(string search)
         {
-            throw new System.NotImplementedException();
+            List<Reservation> _reservations = new List<Reservation>();
+
+            foreach( Reservation reservation in _reservationRepo.Read())
+            {
+                if( reservation.ReservationName == search)
+                {
+                    _reservations.Add(reservation);
+                }
+            }
+            return _reservations;
         }
     }
 }

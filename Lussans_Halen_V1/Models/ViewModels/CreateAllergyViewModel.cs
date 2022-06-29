@@ -9,6 +9,10 @@ namespace Lussans_Halen_V1.Models.ViewModels
     public class CreateAllergyViewModel
     {
         public int AllergyId { get; set; }
+        public string AllergyInfoName { get; set; }
         public string AllergyInfo { get; set; }
+
+        public int DishId { get; set; }
+        public Dish DishName { get; set; }
     }
 }

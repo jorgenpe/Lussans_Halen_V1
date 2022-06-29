@@ -5,5 +5,6 @@
 
         public int ReservationId { get; set; }
         public string ReservationName { get; set; }
+        public string ReservationDescription { get; set; }
     }
 }

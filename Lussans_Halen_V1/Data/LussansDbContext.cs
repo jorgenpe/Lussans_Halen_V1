@@ -25,7 +25,8 @@ namespace Lussans_Halen_V1.Data
         public DbSet<Allergy> Allergies { get; set; }
         public DbSet<Accessory> Accessories { get; set; }
         public DbSet<SpecialEvent> SpecialEvents { get; set; }
-        
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<DishAccessory> DishAccessories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,32 +47,29 @@ namespace Lussans_Halen_V1.Data
                 .HasOne(a => a.AllergyInfo)
                 .WithOne(b => b.Dish)
                 .HasForeignKey<Allergy>(b => b.DishId);
-            /*
-                            modelBuilder.Entity<City>()
-                                .HasOne(a => a.CountryName)
-                                .WithMany(b => b.CountryCitys)
-                                .HasForeignKey(a => a.CountryId);
+           
+                            
 
-                            modelBuilder.Entity<PersonLanguage>().HasKey(pl =>
-                               new {
-                                   pl.PersonId,
-                                   pl.LanguageId
-                               });
+            modelBuilder.Entity<DishAccessory>().HasKey(pl =>
+                new {
+                    pl.DishId,
+                    pl.AccessoryId
+                });
 
 
-                            modelBuilder.Entity<PersonLanguage>()
-                                .HasOne(pl => pl.Person)
-                                .WithMany(p => p.PersonLanguages)
-                                .HasForeignKey(pl => pl.PersonId);
+            modelBuilder.Entity<DishAccessory>()
+                .HasOne(pl => pl.Dish)
+                .WithMany(p => p.DishAccessories)
+                .HasForeignKey(pl => pl.DishId);
 
-                            modelBuilder.Entity<PersonLanguage>()
-                                .HasOne(pl => pl.Language)
-                                .WithMany(p => p.PersonLanguages)
-                                .HasForeignKey(pl => pl.LanguageId);
+            modelBuilder.Entity<DishAccessory>()
+                .HasOne(pl => pl.Accessory)
+                .WithMany(p => p.DishAccessories)
+                .HasForeignKey(pl => pl.AccessoryId);
 
 
 
-                            modelBuilder.Entity<AccountPerson>().HasData(new AccountPerson
+                            /* modelBuilder.Entity<AccountPerson>().HasData(new AccountPerson
                              {
                                  Id = AdminId,
                                  UserName = "Admin",

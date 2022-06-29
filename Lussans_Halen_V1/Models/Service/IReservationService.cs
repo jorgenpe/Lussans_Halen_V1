@@ -3,7 +3,7 @@ using Lussans_Halen_V1.Models.ViewModels;
 
 namespace Lussans_Halen_V1.Models.Service
 {
-    public interface IReservation
+    public interface IReservationService
     {
         Reservation Add(CreateReservationViewModel reservation);
         List<Reservation> All();
