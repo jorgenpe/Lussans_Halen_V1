@@ -11,7 +11,7 @@ namespace Lussans_Halen_V1.Models
     public class Dish
     {
         [Key]
-        public int dishId { get; set; }
+        public int DishId { get; set; }
         public string DishName { get; set; }
         public decimal DishPrice { get; set; }
         public string MenuTyp { get; set; }
@@ -25,6 +25,7 @@ namespace Lussans_Halen_V1.Models
         public Allergy AllergyInfo { get; set; }
 
         public List<DishAccessory> DishAccessories { get; set; }
+        public List<DishWeekMenu> dishWeekMenuList { get; set; }
 
     }
 }

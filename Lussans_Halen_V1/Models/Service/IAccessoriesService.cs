@@ -5,7 +5,7 @@ namespace Lussans_Halen_V1.Models.Service
 {
     public interface IAccessoriesService
     {
-        Accessory Add(CreateAllergyViewModel accessory);
+        Accessory Add(CreateAccessoriesViewModel accessory);
         List<Accessory> All();
         List<Accessory> Search(string search);
         Accessory FindById(int id);

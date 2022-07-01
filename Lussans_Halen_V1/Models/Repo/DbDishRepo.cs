@@ -48,7 +48,7 @@ namespace Lussans_Halen_V1.Models.Repo
             {
                 return null;
             }
-            return _lussansDbContext.Dishes.SingleOrDefault(p => p.dishId == id); 
+            return _lussansDbContext.Dishes.SingleOrDefault(p => p.DishId == id); 
         }
 
         public bool Update(Dish dish)

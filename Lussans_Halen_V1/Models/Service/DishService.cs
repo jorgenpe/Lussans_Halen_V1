@@ -1,43 +1,86 @@
 ﻿using Lussans_Halen_V1.Models.ViewModels;
+using Lussans_Halen_V1.Models.Repo;
 using System.Collections.Generic;
 
 namespace Lussans_Halen_V1.Models.Service
 {
     public class DishService : IDishService
     {
-        public Dish Add(CreateDishViewModel Dish)
+        private readonly IDishRepo _dishRepo;
+
+        public DishService(IDishRepo dishRepo)
         {
-            throw new System.NotImplementedException();
+            _dishRepo = dishRepo;
+        }
+
+        public Dish Add(CreateDishViewModel dish)
+        {
+            
+            Dish _dish = new Dish()
+                {
+                    DishId = 0,
+                    DishName = dish.DishName,
+                    DishPrice = dish.DishPrice,
+                    MenuTyp = dish.MenuTyp,
+                    AllergyInfo = dish.AllergyInfo
+                };
+
+            foreach(Dish _Dish in _dishRepo.Read())
+            {
+                if(_Dish.DishName == dish.DishName) 
+                { 
+                    _dish.DishId = dish.DishId;
+                    return _dish;
+                }
+            }
+            
+            return _dishRepo.Create(_dish);
+            
         }
 
         public List<Dish> All()
         {
-            throw new System.NotImplementedException();
+            return _dishRepo.Read();
         }
 
         public bool Edit(int id, CreateDishViewModel dish)
         {
-            throw new System.NotImplementedException();
+
+            Dish _dish = _dishRepo.Read(id);
+
+            if(dish != null)
+            {
+                _dish.DishName = dish.DishName;
+                _dish.MenuTyp = dish.MenuTyp;
+                _dish.DishPrice= dish.DishPrice;
+                _dish.AllergyInfo = dish.AllergyInfo;
+
+                return _dishRepo.Update(_dish);
+            }
+            return false;
         }
 
         public Dish FindById(int id)
         {
-            throw new System.NotImplementedException();
+            return _dishRepo.Read(id);
         }
 
         public bool Remove(int id)
         {
-            throw new System.NotImplementedException();
+            return _dishRepo.Delete(FindById(id));
         }
 
         public List<Dish> Search(string search)
         {
-            throw new System.NotImplementedException();
+            List<Dish> dishes = new List<Dish>();
+
+            foreach(Dish dish in _dishRepo.Read())
+            {
+                dishes.Add(dish);
+            }
+
+            return dishes;
         }
 
-        public List<string> UniqAll()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

@@ -8,7 +8,6 @@ namespace Lussans_Halen_V1.Models.Service
 
         Dish Add(CreateDishViewModel dish);
         List<Dish> All();
-        List<string> UniqAll();
         List<Dish> Search(string search);
         Dish FindById(int id);
         bool Edit(int id, CreateDishViewModel dish);
