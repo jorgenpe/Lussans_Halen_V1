@@ -25,7 +25,7 @@ namespace Lussans_Halen_V1.Models
         public Allergy AllergyInfo { get; set; }
 
         public List<DishAccessory> DishAccessories { get; set; }
-        public List<DishWeekMenu> dishWeekMenuList { get; set; }
+        public List<DishWeekMenu> DishWeekMenuList { get; set; }
 
     }
 }

@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-//using Lussans_Halen_V1.Data;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Lussans_Halen_V1.Models
+namespace Lussans_Halen_V1.Models.ViewModels
 {
-    public class WeekMenu
+    public class CreateWeekMenuViewModel
     {
-        [Key]
         public int WeekMenuId { get; set; }
         [Required]
         [StringLength(128)]
@@ -18,6 +15,5 @@ namespace Lussans_Halen_V1.Models
         public Weekday Day { get; set; }
 
         public List<DishWeekMenu> DishWeekMenuList { get; set; }
-
     }
 }

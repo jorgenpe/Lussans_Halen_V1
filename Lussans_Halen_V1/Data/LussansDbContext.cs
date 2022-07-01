@@ -27,6 +27,9 @@ namespace Lussans_Halen_V1.Data
         public DbSet<SpecialEvent> SpecialEvents { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<DishAccessory> DishAccessories { get; set; }
+        public DbSet<WeekMenu> WeekMenus { get; set; }
+        public DbSet<DishWeekMenu> DishWeekMenus { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,14 +41,11 @@ namespace Lussans_Halen_V1.Data
             string UserRoleId = Guid.NewGuid().ToString();
 
 
-            modelBuilder.Entity<Dish>()
-                .HasOne(a => a.AccessoryName)
-                .WithMany(b => b.Dishes)
-                .HasForeignKey(a => a.AccessoryId);
+            
 
             modelBuilder.Entity<Dish>()
                 .HasOne(a => a.AllergyInfo)
-                .WithOne(b => b.Dish)
+                .WithOne(b => b.DishName)
                 .HasForeignKey<Allergy>(b => b.DishId);
            
                             
@@ -67,41 +67,58 @@ namespace Lussans_Halen_V1.Data
                 .WithMany(p => p.DishAccessories)
                 .HasForeignKey(pl => pl.AccessoryId);
 
+            modelBuilder.Entity<DishWeekMenu>().HasKey(pl =>
+                new {
+                    pl.DishId,
+                    pl.WeekMenuId
+                });
 
 
-                            /* modelBuilder.Entity<AccountPerson>().HasData(new AccountPerson
-                             {
-                                 Id = AdminId,
-                                 UserName = "Admin",
-                                 Email = "admin@gmail.com",
-                                 PasswordHash = new PasswordHasher<AccountPerson>().HashPassword(null, "Qwer€321"),
-                                 FirstName = "Bob",
-                                 LastName = "Hope",
-                                 EmailConfirmed = true,
-                                 DateOfBirth = DateTime.Now,
-                                 AccessFailedCount = 0,
+            modelBuilder.Entity<DishWeekMenu>()
+                .HasOne(pl => pl.Dish)
+                .WithMany(p => p.DishWeekMenuList)
+                .HasForeignKey(pl => pl.DishId);
 
-                             });
+            modelBuilder.Entity<DishWeekMenu>()
+                .HasOne(pl => pl.WeekMenu)
+                .WithMany(p => p.DishWeekMenuList)
+                .HasForeignKey(pl => pl.WeekMenuId);
 
-                             modelBuilder.Entity<AccountPerson>().HasData(
-                                 new IdentityRole
-                                 {
-                                     Id = AdminRoleId,
-                                     Name = "Admin"
-                                 },
-                                 new IdentityRole
-                                 {
-                                     Id = UserRoleId,
-                                     Name = "User"
-                                 }
-                                 );
 
-                             modelBuilder.Entity<AccountPerson>().HasData(
-                                 new IdentityUserRole<string>
-                                 {
-                                     UserId = AdminId,
-                                     RoleId = AdminRoleId
-                                 });*/
+
+            /* modelBuilder.Entity<AccountPerson>().HasData(new AccountPerson
+             {
+                 Id = AdminId,
+                 UserName = "Admin",
+                 Email = "admin@gmail.com",
+                 PasswordHash = new PasswordHasher<AccountPerson>().HashPassword(null, "Qwer€321"),
+                 FirstName = "Bob",
+                 LastName = "Hope",
+                 EmailConfirmed = true,
+                 DateOfBirth = DateTime.Now,
+                 AccessFailedCount = 0,
+
+             });
+
+             modelBuilder.Entity<AccountPerson>().HasData(
+                 new IdentityRole
+                 {
+                     Id = AdminRoleId,
+                     Name = "Admin"
+                 },
+                 new IdentityRole
+                 {
+                     Id = UserRoleId,
+                     Name = "User"
+                 }
+                 );
+
+             modelBuilder.Entity<AccountPerson>().HasData(
+                 new IdentityUserRole<string>
+                 {
+                     UserId = AdminId,
+                     RoleId = AdminRoleId
+                 });*/
 
         }
     }
