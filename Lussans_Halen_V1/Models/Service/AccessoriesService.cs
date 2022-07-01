@@ -26,12 +26,12 @@ namespace Lussans_Halen_V1.Models.Service
             {
                 if(_Accessory.AccessoryName == accessory.AccessoriesName)
                 {
-                    _accessory.AccessoryId = accessory.AccessoriesId;
+                    _accessory.AccessoryId = _Accessory.AccessoryId;
                     return _accessory;
 
                 }
             }
-            return _accessory;
+            return _accessoriesRepo.Create(_accessory);
         }
 
         public List<Accessory> All()
