@@ -45,6 +45,10 @@ namespace Lussans_Halen_V1
             services.AddScoped<IReservationService, ReservationService>();
             services.AddScoped<ISpecialEventsRepo, DbSpecialEventsRepo>();
             services.AddScoped<ISpecialEventsService, SpecialEventsService>();
+            services.AddScoped<IContactRepo, DbContactRepo>();
+            services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<IWeekMenuRepo, DbWeekMenuRepo>();
+            services.AddScoped<IWeekMenuService, WeekMenuService>();
 
             services.AddDistributedMemoryCache();
 

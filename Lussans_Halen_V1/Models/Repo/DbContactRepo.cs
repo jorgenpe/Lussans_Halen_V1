@@ -1,32 +1,67 @@
 ﻿using System.Collections.Generic;
+using Lussans_Halen_V1.Data;
+using System.Linq;
 
 namespace Lussans_Halen_V1.Models.Repo
 {
     public class DbContactRepo : IContactRepo
     {
+        readonly LussansDbContext _lussansDbContext;
+
+        public DbContactRepo(LussansDbContext lussansDbContext)
+        {
+            _lussansDbContext = lussansDbContext;
+        }
+
         public Contact Create(Contact contact)
         {
-            throw new System.NotImplementedException();
+            _lussansDbContext.Add(contact);
+            _lussansDbContext.SaveChanges();
+
+            return contact;
         }
 
         public bool Delete(Contact contact)
         {
-            throw new System.NotImplementedException();
+            _lussansDbContext.Remove(contact);
+
+            int change = _lussansDbContext.SaveChanges();
+
+            if (change == 2) { return true; }
+
+            return false;
         }
 
         public List<Contact> Read()
         {
-            throw new System.NotImplementedException();
+            if(_lussansDbContext == null)
+            {
+                return null;
+            }
+            return _lussansDbContext.Contacts.ToList();
         }
 
         public Contact Read(int id)
         {
-            throw new System.NotImplementedException();
+            if (_lussansDbContext == null)
+            {
+                return null;
+            }
+            return _lussansDbContext.Contacts.SingleOrDefault(p => p.ContactId == id);
         }
 
         public bool Update(Contact contact)
         {
-            throw new System.NotImplementedException();
+            _lussansDbContext.Update(contact);
+
+            int change = _lussansDbContext.SaveChanges();
+
+            if (change == 2) 
+            { 
+                return true; 
+            }
+
+            return false;
         }
     }
 }
