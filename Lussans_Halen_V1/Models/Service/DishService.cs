@@ -48,11 +48,11 @@ namespace Lussans_Halen_V1.Models.Service
 
             Dish _dish = _dishRepo.Read(id);
 
-            if(dish != null)
+            if (dish != null)
             {
                 _dish.DishName = dish.DishName;
                 _dish.MenuTyp = dish.MenuTyp;
-                _dish.DishPrice= dish.DishPrice;
+                _dish.DishPrice = dish.DishPrice;
                 _dish.AllergyInfo = dish.AllergyInfo;
 
                 return _dishRepo.Update(_dish);

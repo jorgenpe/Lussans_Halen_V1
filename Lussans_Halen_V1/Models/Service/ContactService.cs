@@ -1,38 +1,91 @@
-﻿using System.Collections.Generic;
-using Lussans_Halen_V1.Models.ViewModels;
+﻿using Lussans_Halen_V1.Models.ViewModels;
+using Lussans_Halen_V1.Models.Repo;
+using System.Collections.Generic;
 
 namespace Lussans_Halen_V1.Models.Service
 {
     public class ContactService : IContactService
     {
+
+        private readonly IContactRepo _contactRepo;
+
+        public ContactService(IContactRepo contactRepo)
+        {
+            _contactRepo = contactRepo;
+        }
+
         public Contact Add(CreateContactViewModel contact)
         {
-            throw new System.NotImplementedException();
+            Contact _contact = new Contact() { ContactId = 0, ContactName = contact.ContactName, ExtenedContactName = contact.ExtenedContactName,
+                               PhoneNumber =  contact.PhoneNumber, Email = contact.Email, City = contact.City, Street = contact.Street, ZipCode = contact.ZipCode };
+            _contactRepo.Create(_contact);
+            return _contact;
+
         }
 
         public List<Contact> All()
         {
-            throw new System.NotImplementedException();
+            return _contactRepo.Read();
         }
 
         public bool Edit(int id, CreateContactViewModel contact)
         {
-            throw new System.NotImplementedException();
+            Contact _contact = new Contact()
+            {
+                ContactId = id,
+                ContactName = contact.ContactName,
+                ExtenedContactName = contact.ExtenedContactName,
+                PhoneNumber = contact.PhoneNumber,
+                Email = contact.Email,
+                City = contact.City,
+                Street = contact.Street,
+                ZipCode = contact.ZipCode
+            };
+
+            return _contactRepo.Update(_contact);
         }
 
         public Contact FindById(int id)
         {
-            throw new System.NotImplementedException();
+            return _contactRepo.Read(id);
         }
 
         public bool Remove(int id)
         {
-            throw new System.NotImplementedException();
+            return _contactRepo.Delete(FindById(id));
         }
 
         public List<Contact> Search(string search)
         {
-            throw new System.NotImplementedException();
+            List<Contact> _contacts = new List<Contact>();
+
+            foreach(Contact contact in _contactRepo.Read())
+            {
+                if (contact.ContactName == search)
+                {
+                    _contacts.Add(contact);
+                } else if (contact.ExtenedContactName == search)
+                {
+                    _contacts.Add(contact);
+                } else if (contact.PhoneNumber == search)
+                {
+                    _contacts.Add(contact);
+                }
+                else if (contact.Email == search)
+                {
+                    _contacts.Add(contact);
+                }else if(contact.City == search)
+                {
+                    _contacts.Add(contact);
+                }else if( contact.Street == search)
+                {
+                    _contacts.Add(contact);
+                }else if( contact.ZipCode == search)
+                {
+                    _contacts.Add(contact);
+                }
+            }
+            return _contacts;
         }
     }
 }

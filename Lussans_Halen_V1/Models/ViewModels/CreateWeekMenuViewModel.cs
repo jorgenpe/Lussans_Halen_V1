@@ -15,5 +15,8 @@ namespace Lussans_Halen_V1.Models.ViewModels
         public Weekday Day { get; set; }
 
         public List<DishWeekMenu> DishWeekMenuList { get; set; }
+
+        
+        
     }
 }
