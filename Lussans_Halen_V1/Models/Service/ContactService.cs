@@ -16,7 +16,7 @@ namespace Lussans_Halen_V1.Models.Service
 
         public Contact Add(CreateContactViewModel contact)
         {
-            Contact _contact = new Contact() { ContactId = 0, ContactName = contact.ContactName, ExtenedContactName = contact.ExtenedContactName,
+            Contact _contact = new Contact() { ContactId = 0, ContactName = contact.ContactName, ExtendedContactName = contact.ExtendedContactName,
                                PhoneNumber =  contact.PhoneNumber, Email = contact.Email, City = contact.City, Street = contact.Street, ZipCode = contact.ZipCode };
             _contactRepo.Create(_contact);
             return _contact;
@@ -34,7 +34,7 @@ namespace Lussans_Halen_V1.Models.Service
             {
                 ContactId = id,
                 ContactName = contact.ContactName,
-                ExtenedContactName = contact.ExtenedContactName,
+                ExtendedContactName = contact.ExtendedContactName,
                 PhoneNumber = contact.PhoneNumber,
                 Email = contact.Email,
                 City = contact.City,
@@ -64,7 +64,7 @@ namespace Lussans_Halen_V1.Models.Service
                 if (contact.ContactName == search)
                 {
                     _contacts.Add(contact);
-                } else if (contact.ExtenedContactName == search)
+                } else if (contact.ExtendedContactName == search)
                 {
                     _contacts.Add(contact);
                 } else if (contact.PhoneNumber == search)

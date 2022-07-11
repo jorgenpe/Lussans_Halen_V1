@@ -1,0 +1,17 @@
+﻿@model CreateAccessoriesViewModel;
+@*{
+    ViewData["Title"] = "City - Add new city";
+}*@
+<h1>Nytt tillbehör</h1>
+
+<form asp-action="Create" method="post">
+    
+
+    <label asp-for="AccessoryName"></label>
+    <input asp-for="AccessoryName"  />
+    <span asp-validation-for="AccessoryName"></span>
+  
+    <button type="submit" class="btn btn-outline-dark">Lägg till tillbehör</button>
+
+    
+</form>

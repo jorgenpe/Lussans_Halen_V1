@@ -1,0 +1,20 @@
+﻿@model CreateReservationViewModel;
+
+<h1>Reservationer</h1>
+
+
+<form asp-action="Create" method="post">
+    
+
+    <label asp-for="ReservationName">Namn:</label>
+    <input asp-for="ReservationName"/>
+    <span asp-validation-for="ReservationName"></span>
+
+    <label asp-for="ReservationDescription">Skriv in reservation:</label>
+    <textarea asp-for="ReservationDescription" rows="20"  cols="100"></textarea>
+
+    
+    <span asp-validation-for="ReservationDescription"></span>
+  
+    <button type="submit" class="btn btn-outline-dark">Lägg till reservation</button>
+</form>

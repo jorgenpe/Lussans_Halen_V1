@@ -1,0 +1,41 @@
+﻿@model CreateAllergyViewModel;
+@{
+    ViewData["Title"] = "Contact - Add new Contact";
+}
+<h1>Kontakt information</h1>
+
+<form asp-action="Create" method="post">
+    
+
+    <label asp-for="ContactName">Namn:</label>
+    <input asp-for="ContactName"/>
+    <span asp-validation-for="ContactName"></span>
+
+    <label asp-for="ExtendedContactName">Tilläggsnamn::</label>
+    <input asp-for="ExtendedContactName"/>
+    <span asp-validation-for="ExtendedContactName"></span>
+
+    <label asp-for="PhoneNumber">Telefon nummer:</label>
+    <input asp-for="PhoneNumber"/>
+    <span asp-validation-for="PhoneNumber"></span>
+
+    <label asp-for="Email">Email adress:</label>
+    <input asp-for="Email"/>
+    <span asp-validation-for="Email"></span>
+
+    <label asp-for="ZipCode">Postnummer:</label>
+    <input asp-for="ZipCode"/>
+    <span asp-validation-for="Zipcode"></span>
+
+    <label asp-for="Street">Gatuadress:</label>
+    <input asp-for="Street"/>
+    <span asp-validation-for="Street"></span>
+
+    <label asp-for="City">Tätorts namn:</label>
+    <input asp-for="City"/>
+    <span asp-validation-for="City"></span>
+  
+    <button type="submit" class="btn btn-outline-dark">Lägg till allergi info</button>
+
+    
+</form>

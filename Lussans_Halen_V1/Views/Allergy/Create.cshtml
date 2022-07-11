@@ -1,0 +1,22 @@
+﻿
+@model CreateAllergyViewModel;
+
+<h1>Allergi information</h1>
+
+
+<form asp-action="Create" method="post">
+    
+
+    <label asp-for="AllergyInfoName">Namn:</label>
+    <input asp-for="AllergyInfoName"/>
+    <span asp-validation-for="AllergyInfoName"></span>
+
+    <label asp-for="AllergyInfo">Skriv in allergi information:</label>
+    <textarea asp-for="AllergyInfo" rows="20"  cols="100"></textarea>
+
+    
+    <span asp-validation-for="AllergyInfo"></span>
+  
+    <button type="submit" class="btn btn-outline-dark">Lägg till allergi info</button>
+</form>
+    

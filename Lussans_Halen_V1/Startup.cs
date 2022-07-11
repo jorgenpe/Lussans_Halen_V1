@@ -98,6 +98,11 @@ namespace Lussans_Halen_V1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "PrivateHome",
+                    pattern: "Private/Lussan",
+                    defaults: new {controller = "PrivateHome", action="Index"});
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

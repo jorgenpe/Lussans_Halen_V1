@@ -1,0 +1,21 @@
+﻿@model CreateSpecialEventsViewModel;
+
+<h1>Evenemang information</h1>
+
+
+<form asp-action="Create" method="post">
+    
+
+    <label asp-for="SpecialEventsInfoName">Namn:</label>
+    <input asp-for="SpecialEventsInfoName"/>
+    <span asp-validation-for="SpecialEventsInfoName"></span>
+
+    <label asp-for="SpecialEventsDiscription">Skriv in allergi information:</label>
+    <textarea asp-for="SpecialEventsDiscription" rows="20"  cols="100"></textarea>
+
+    
+    <span asp-validation-for="SpecialEventsDiscription"></span>
+  
+    <button type="submit" class="btn btn-outline-dark">Lägg till evenemang</button>
+</form>
+    
