@@ -1,7 +1,5 @@
 ﻿using Lussans_Halen_V1.Models.ViewModels;
 using System.Collections.Generic;
-
-using Lussans_Halen_V1.Models.ViewModels;
 using Lussans_Halen_V1.Models.Repo;
 using System.Collections.Generic;
 

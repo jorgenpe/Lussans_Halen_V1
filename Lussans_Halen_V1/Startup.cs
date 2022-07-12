@@ -100,7 +100,7 @@ namespace Lussans_Halen_V1
                 endpoints.MapControllerRoute(
                     name: "PrivateHome",
                     pattern: "Private/Lussan",
-                    defaults: new {controller = "PrivateHome", action="Index"});
+                    defaults: new {controller = "PrivateHome", action="Login"});
 
                 endpoints.MapControllerRoute(
                     name: "default",
