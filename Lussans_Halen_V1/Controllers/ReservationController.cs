@@ -59,7 +59,7 @@ namespace Lussans_Halen_V1.Controllers
         // GET: ReservationController/Edit/5
         public ActionResult Edit()
         {
-            CreateReservationViewModel editReservation = new CreateReservationViewModel();
+            //CreateReservationViewModel editReservation = new CreateReservationViewModel();
             return View();
         }
 

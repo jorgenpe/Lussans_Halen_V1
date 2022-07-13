@@ -1,0 +1,30 @@
+﻿@model List<SpecialEvent>
+ <table>
+
+     <thead>
+
+         <partial name="_ConstantSpecialEventPartialView"/>
+
+
+     </thead>
+
+     <div class= "col-sm">
+            <a class="btn btn-outline-dark" asp-area="" asp-controller="SpecialEvents" asp-action="Create"  >Skapa Evenemang</a>
+            
+     </div>
+     <br>
+
+     <tbody>
+         
+        @foreach (SpecialEvent specialEvent in Model)
+        {
+            <partial name="_SpecialEventPartialView" model="specialEvent"/>
+        }
+
+
+
+     </tbody>
+
+
+
+ </table>

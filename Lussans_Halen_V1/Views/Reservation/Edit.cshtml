@@ -8,18 +8,19 @@
     <input type="hidden" asp-for="ReservationId" onfocus="this.value=''" value="@Model.ReservationId"/>
    
 
-    <label asp-for="ReservationName">Namn</label>
+    <label asp-for="ReservationName">Namn:</label>
+    <br>
     <input asp-for="ReservationName" onfocus="this.value='@Model.ReservationName'" value="@Model.ReservationName" type="text" class="form-control"/>
     <span asp-validation-for="ReservationName"></span>
     <br>
     <label asp-for="ReservationDescription">Beskrivning</label>
-    <textarea asp-for="ReservationDescription" onfocus="this.value='@Model.ReservationDescription'" class="form-control" rows="5" type="text" value="@Model.ReservationDescription"  placeholder=""></textarea>
+    <textarea asp-for="ReservationDescription" onfocus="this.value='@Model.ReservationDescription'" class="form-control" rows="20" type="text" value="@Model.ReservationDescription"  placeholder=""></textarea>
     <span asp-validation-for="ReservationDescription"></span>
-
+    <br>
 
     
 
-    <button type="submit" class="btn btn-outline-dark">Edit person</button>
+    <button type="submit" class="btn btn-outline-dark">Ändra bokning</button>
 
     
 </form>

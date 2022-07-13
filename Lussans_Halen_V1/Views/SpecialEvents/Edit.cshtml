@@ -1,0 +1,26 @@
+﻿@model CreateSpecialEventsViewModel;
+
+
+<h1>Ändra i reservationer</h1>
+
+<form asp-Controller = "SpecialEvents" asp-action="Edit" method="post">
+    
+    <input type="hidden" asp-for="SpecialEventsId" onfocus="this.value=''" value="@Model.SpecialEventsId"/>
+   
+
+    <label asp-for="SpecialEventsName">Namn:</label>
+    <br>
+    <input asp-for="SpecialEventsName" onfocus="this.value='@Model.SpecialEventsName'" value="@Model.SpecialEventsName" type="text" class="form-control"/>
+    <span asp-validation-for="SpecialEventsName"></span>
+    <br>
+    <label asp-for="SpecialEventsDiscription">Beskrivning</label>
+    <textarea asp-for="SpecialEventsDiscription" onfocus="this.value='@Model.SpecialEventsDiscription'" class="form-control" rows="20" type="text" value="@Model.SpecialEventsDiscription"  placeholder=""></textarea>
+    <span asp-validation-for="SpecialEventsDiscription"></span>
+    <br>
+
+    
+
+    <button type="submit" class="btn btn-outline-dark">Ändra Evenemang</button>
+
+    
+</form>

@@ -35,7 +35,7 @@ namespace Lussans_Halen_V1.Models.Service
 
         public bool Edit(int id, CreateSpecialEventsViewModel specialEvent)
         {
-            SpecialEvent _specialEvent = new SpecialEvent();
+            SpecialEvent _specialEvent = _specialEventsRepo.Read(id);
             _specialEvent.SpecialEventsId = id;
             _specialEvent.SpecialEventsInfoName = specialEvent.SpecialEventsName;
             _specialEvent.SpecialEventsDiscription = specialEvent.SpecialEventsDiscription;

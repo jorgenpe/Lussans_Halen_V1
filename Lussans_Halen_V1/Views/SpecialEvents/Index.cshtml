@@ -1,0 +1,27 @@
+﻿@model List<SpecialEvent>
+ <table>
+
+     <thead>
+
+         <partial name="_ConstantSpecialEventPartialView"/>
+
+
+     </thead>
+
+    
+     <br>
+
+     <tbody>
+         
+        @foreach (SpecialEvent specialEvent in Model)
+        {
+            <partial name="_SpecialEventTwoPartialView" model="specialEvent"/>
+        }
+
+
+
+     </tbody>
+
+
+
+ </table> 

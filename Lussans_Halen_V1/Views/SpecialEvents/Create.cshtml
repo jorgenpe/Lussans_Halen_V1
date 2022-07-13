@@ -7,15 +7,15 @@
     
 
     <label asp-for="SpecialEventsName">Namn:</label>
-    <input asp-for="SpecialEventsName"/>
+    <br>
+    <input asp-for="SpecialEventsName" onfocus="this.value=''" min="0" required autocomplete="off" type="text" class="form-control"/>
     <span asp-validation-for="SpecialEventsName"></span>
-
+    <br>
     <label asp-for="SpecialEventsDiscription">Skriv in allergi information:</label>
-    <textarea asp-for="SpecialEventsDiscription" rows="20"  cols="100"></textarea>
-
-    
+    <br>
+    <textarea asp-for="SpecialEventsDiscription" class="form-control" rows="20" onfocus="this.value=''" type="text" ></textarea>
     <span asp-validation-for="SpecialEventsDiscription"></span>
-  
+    <br>
     <button type="submit" class="btn btn-outline-dark">Lägg till evenemang</button>
 </form>
     

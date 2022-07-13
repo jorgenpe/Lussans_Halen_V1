@@ -1,45 +1,68 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Lussans_Halen_V1.Models.Service;
+using Lussans_Halen_V1.Models.ViewModels;
+using Lussans_Halen_V1.Models;
 
 namespace Lussans_Halen_V1.Controllers
 {
     public class SpecialEventsController : Controller
     {
+        private readonly ISpecialEventsService _specialEventsService; 
+
+        public SpecialEventsController(ISpecialEventsService specialEventsService)
+        {
+            _specialEventsService = specialEventsService;
+        }
+
+
+
         // GET: SpecialEventsController
         public ActionResult Index()
         {
-            return View();
+            return View(_specialEventsService.All());
         }
 
-        // GET: SpecialEventsController/Details/5
-        public ActionResult Details(int id)
+        // GET: SpecialEventsController
+        public ActionResult PrivateIndex()
         {
-            return View();
+            return View(_specialEventsService.All());
         }
+
+
 
         // GET: SpecialEventsController/Create
         public ActionResult Create()
         {
-            return View();
+            CreateSpecialEventsViewModel createSpecialEvent = new CreateSpecialEventsViewModel();
+            return View(createSpecialEvent);
         }
 
         // POST: SpecialEventsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CreateSpecialEventsViewModel createSpecialEvents)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if(ModelState.IsValid && createSpecialEvents != null)
+                {
+                    _specialEventsService.Add(createSpecialEvents);
+                    return RedirectToAction("PrivateIndex");
+                }
+
+                return View(createSpecialEvents);
+
+                
             }
             catch
             {
-                return View();
+                return View(createSpecialEvents);
             }
         }
 
         // GET: SpecialEventsController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
             return View();
         }
@@ -47,11 +70,34 @@ namespace Lussans_Halen_V1.Controllers
         // POST: SpecialEventsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, CreateSpecialEventsViewModel editSpecialEvents)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                SpecialEvent specialEvent = new SpecialEvent();
+                if (id == 0 && editSpecialEvents.SpecialEventsId != 0)
+                {
+                    specialEvent = _specialEventsService.FindById(editSpecialEvents.SpecialEventsId);
+                }
+                else
+                {
+                    specialEvent = _specialEventsService.FindById(id);
+                }
+
+
+                CreateSpecialEventsViewModel newSpecialEvents = new CreateSpecialEventsViewModel();
+
+                newSpecialEvents.SpecialEventsId = id;
+                newSpecialEvents.SpecialEventsName = specialEvent.SpecialEventsInfoName;
+                newSpecialEvents.SpecialEventsDiscription = specialEvent.SpecialEventsDiscription;
+
+                if (ModelState.IsValid && editSpecialEvents.SpecialEventsId != 0)
+                {
+                    id = specialEvent.SpecialEventsId;
+                    _specialEventsService.Edit(id, editSpecialEvents);
+                    return RedirectToAction("PrivateIndex", "SpecialEvents");
+                }
+                return View(newSpecialEvents);
             }
             catch
             {
@@ -72,7 +118,11 @@ namespace Lussans_Halen_V1.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _specialEventsService.Remove(id);
+                }
+                return RedirectToAction("PrivateIndex");
             }
             catch
             {

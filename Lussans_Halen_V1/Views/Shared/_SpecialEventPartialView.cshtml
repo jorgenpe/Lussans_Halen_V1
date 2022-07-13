@@ -1,18 +1,18 @@
-﻿@model Reservation
+﻿@model SpecialEvent
 
 
 <div class="row">
 
-    <div class="col-sm">@Model.ReservationName</div>
+    <div class="col-sm">@Model.SpecialEventsInfoName</div>
     <div class="col-sm">
-        <form asp-Controller="Reservation" asp-action="Edit" method="post">
-            <input type="hidden"  value="@Model.ReservationId" name="id"/>
+        <form asp-Controller="SpecialEvents" asp-action="Edit" method="post">
+            <input type="hidden"  value="@Model.SpecialEventsId" name="id"/>
             <button type="submit" class= "btn btn-outline-danger">Ändra </button>
         </form>
     </div>
     <div class= "col-sm">
         <form asp-action="Delete" method="post">
-            <input type="hidden"  value="@Model.ReservationId" name="id"/>
+            <input type="hidden"  value="@Model.SpecialEventsId" name="id"/>
             <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
         </form>                  
     </div>
