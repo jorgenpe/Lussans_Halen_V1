@@ -1,0 +1,30 @@
+﻿@model List<Reservation>
+ <table>
+
+     <thead>
+
+         <partial name="_ConstantReservationPartialView"/>
+
+
+     </thead>
+
+     <div class= "col-sm">
+            <a class="btn btn-outline-dark" asp-area="" asp-controller="Reservation" asp-action="Create"  >Skapa reservation</a>
+            
+     </div>
+     <br>
+
+     <tbody>
+         
+        @foreach (Reservation reservation in Model)
+        {
+            <partial name="_ReservationPartialView" model="reservation"/>
+        }
+
+
+
+     </tbody>
+
+
+
+ </table>

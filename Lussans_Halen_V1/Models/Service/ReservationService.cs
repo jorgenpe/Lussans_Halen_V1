@@ -15,7 +15,8 @@ namespace Lussans_Halen_V1.Models.Service
 
         public Reservation Add(CreateReservationViewModel reservation)
         {
-            Reservation newReservation = new Reservation() { ReservationId = 0, ReservationName = reservation.ReservationName};
+            Reservation newReservation = new Reservation() { ReservationId = 0, ReservationName = reservation.ReservationName,
+                ReservationDescription = reservation.ReservationDescription};
 
             _reservationRepo.Create(newReservation);
             return newReservation;
@@ -34,7 +35,9 @@ namespace Lussans_Halen_V1.Models.Service
 
         public bool Edit(int id, CreateReservationViewModel reservation)
         {
-            Reservation reservationToUpdate = new Reservation();
+            Reservation reservationToUpdate = _reservationRepo.Read(id);
+
+
             reservationToUpdate.ReservationId = id;
             reservationToUpdate.ReservationName = reservation.ReservationName;
             reservationToUpdate.ReservationDescription = reservation.ReservationDescription;
