@@ -1,0 +1,25 @@
+﻿@model Contact
+
+
+<div class="row">
+
+    <div class="col-sm">@Model.ContactName</div>
+    <div class="col-sm">@Model.ExtenedContactName</div>
+    <div class="col-sm">@Model.PhoneNumber</div>
+    <div class="col-sm">
+        <form asp-Controller="Contact" asp-action="Edit" method="post">
+            <input type="hidden"  value="@Model.ContactId" name="id"/>
+            <button type="submit" class= "btn btn-outline-danger">Ändra </button>
+        </form>
+    </div>
+    <div class= "col-sm">
+        <form asp-action="Delete" method="post">
+            <input type="hidden"  value="@Model.ContactId" name="id"/>
+            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+        </form>                  
+    </div>
+
+
+
+
+</div>

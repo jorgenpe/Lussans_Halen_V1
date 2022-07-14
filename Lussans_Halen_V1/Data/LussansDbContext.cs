@@ -41,14 +41,21 @@ namespace Lussans_Halen_V1.Data
             string UserRoleId = Guid.NewGuid().ToString();
 
 
-            
 
-            modelBuilder.Entity<Dish>()
-                .HasOne(a => a.AllergyInfo)
-                .WithOne(b => b.DishName)
-                .HasForeignKey<Allergy>(b => b.DishId);
-           
-                            
+
+            modelBuilder.Entity<Allergy>()
+                .HasOne(a => a.DishName)
+                .WithOne(b => b.AllergyInfo)
+                .HasForeignKey<Allergy>(b => b.AllergyId);
+
+            /*modelBuilder.Entity<Allergy>()//HasKey(t => t.AllergyId)
+                   .(t => t.DishName)
+                   .WithOptionalPrincipal(d => d.AllergyInfo)
+                   .Map(t => t.MapKey("OrderId"));  // declaring here  via MAP means NOT declared in POCO
+            modelBuilder.Entity<Dish>().HasKey(t => t.DishId)
+                        .HasOptional(q => q.Order)*/
+
+
 
             modelBuilder.Entity<DishAccessory>().HasKey(pl =>
                 new {

@@ -1,0 +1,30 @@
+﻿@model List<Allergy>
+ <table>
+
+     <thead>
+
+         <partial name="_ConstantAllergyPartialView"/>
+
+
+     </thead>
+
+     <div class= "col-sm">
+            <a class="btn btn-outline-dark" asp-area="" asp-controller="Allergy" asp-action="Create"  >Skapa allergi information</a>
+            
+     </div>
+     <br>
+
+     <tbody>
+         
+        @foreach (Allergy allergy in Model)
+        {
+            <partial name="_ReservationPartialView" model="allergy"/>
+        }
+
+
+
+     </tbody>
+
+
+
+ </table>

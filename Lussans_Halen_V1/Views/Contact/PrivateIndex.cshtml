@@ -1,0 +1,30 @@
+﻿@model List<Contact>
+ <table>
+
+     <thead>
+
+         <partial name="_ConstantContactPartialView"/>
+
+
+     </thead>
+
+     <div class= "col-sm">
+            <a class="btn btn-outline-dark" asp-area="" asp-controller="Contact" asp-action="Create"  >Skapa kontakt information</a>
+            
+     </div>
+     <br>
+
+     <tbody>
+         
+        @foreach (Contact contact in Model)
+        {
+            <partial name="_ContactPartialView" model="contact"/>
+        }
+
+
+
+     </tbody>
+
+
+
+ </table>

@@ -20,9 +20,9 @@ namespace Lussans_Halen_V1.Models
         public int AccessoryId { get; set; }
         public Accessory AccessoryName { get; set; }*/
 
-        //[ForeignKey("Allergy")]
-       //public int AllergyId { get; set; }
-        public Allergy AllergyInfo { get; set; }
+        [ForeignKey("Allergy")]
+        public int? AllergyId { get; set; }
+        public virtual Allergy AllergyInfo { get; set; }
 
         public List<DishAccessory> DishAccessories { get; set; }
         public List<DishWeekMenu> DishWeekMenuList { get; set; }

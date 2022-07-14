@@ -16,7 +16,7 @@ namespace Lussans_Halen_V1.Models.Service
 
         public Contact Add(CreateContactViewModel contact)
         {
-            Contact _contact = new Contact() { ContactId = 0, ContactName = contact.ContactName, ExtendedContactName = contact.ExtendedContactName,
+            Contact _contact = new Contact() { ContactId = 0, ContactName = contact.ContactName, ExtenedContactName = contact.ExtenedContactName,
                                PhoneNumber =  contact.PhoneNumber, Email = contact.Email, City = contact.City, Street = contact.Street, ZipCode = contact.ZipCode };
             _contactRepo.Create(_contact);
             return _contact;
@@ -30,17 +30,16 @@ namespace Lussans_Halen_V1.Models.Service
 
         public bool Edit(int id, CreateContactViewModel contact)
         {
-            Contact _contact = new Contact()
-            {
-                ContactId = id,
-                ContactName = contact.ContactName,
-                ExtendedContactName = contact.ExtendedContactName,
-                PhoneNumber = contact.PhoneNumber,
-                Email = contact.Email,
-                City = contact.City,
-                Street = contact.Street,
-                ZipCode = contact.ZipCode
-            };
+            Contact _contact = _contactRepo.Read(id);
+
+            _contact.ContactId = id;
+            _contact.ContactName = contact.ContactName;
+            _contact.ExtenedContactName = contact.ExtenedContactName;
+            _contact.Email = contact.Email;
+            _contact.City = contact.City;
+            _contact.Street = contact.Street;
+            _contact.ZipCode = contact.ZipCode;
+            
 
             return _contactRepo.Update(_contact);
         }
@@ -64,7 +63,7 @@ namespace Lussans_Halen_V1.Models.Service
                 if (contact.ContactName == search)
                 {
                     _contacts.Add(contact);
-                } else if (contact.ExtendedContactName == search)
+                } else if (contact.ExtenedContactName == search)
                 {
                     _contacts.Add(contact);
                 } else if (contact.PhoneNumber == search)

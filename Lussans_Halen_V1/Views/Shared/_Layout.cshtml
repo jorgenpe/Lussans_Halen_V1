@@ -65,10 +65,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="PrivateIndex">Bokningar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Allergi information</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Allergy" asp-action="PrivateIndex">Allergi information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Kontakta oss</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="PrivateIndex">Kontakta oss</a>
                         </li>
                          
 
@@ -78,6 +78,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="PrivateHome" asp-action="Logout">Logout</a>
                             </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="PrivateHome" asp-action="RegisterUser">New user</a>
+                                </li>
+                            }
+                            
                         
                         }else
                         {
@@ -100,10 +107,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="Index">Bokningar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Allergi information</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Allergy" asp-action="Index">Allergi information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Kontakta oss</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Kontakta oss</a>
                         </li>
                         }
                     </ul>

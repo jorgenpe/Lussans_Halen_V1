@@ -1,0 +1,23 @@
+﻿@model Allergy
+
+
+<div class="row">
+
+    <div class="col-sm">@Model.AllergyId</div>
+    <div class="col-sm">
+        <form asp-Controller="Allergy" asp-action="Edit" method="post">
+            <input type="hidden"  value="@Model.AllergyId" name="id"/>
+            <button type="submit" class= "btn btn-outline-danger">Ändra </button>
+        </form>
+    </div>
+    <div class= "col-sm">
+        <form asp-action="Delete" method="post">
+            <input type="hidden"  value="@Model.AllergyId" name="id"/>
+            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+        </form>                  
+    </div>
+
+
+
+
+</div>

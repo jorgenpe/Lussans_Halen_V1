@@ -111,9 +111,7 @@ namespace Lussans_Halen_V1.Migrations
             modelBuilder.Entity("Lussans_Halen_V1.Models.Allergy", b =>
                 {
                     b.Property<int>("AllergyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("AllergyInfo")
                         .HasColumnType("nvarchar(max)");
@@ -121,13 +119,10 @@ namespace Lussans_Halen_V1.Migrations
                     b.Property<string>("AllergyInfoName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DishId")
+                    b.Property<int?>("DishId")
                         .HasColumnType("int");
 
                     b.HasKey("AllergyId");
-
-                    b.HasIndex("DishId")
-                        .IsUnique();
 
                     b.ToTable("Allergies");
                 });
@@ -171,6 +166,9 @@ namespace Lussans_Halen_V1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AllergyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DishName")
                         .HasColumnType("nvarchar(max)");
@@ -406,7 +404,7 @@ namespace Lussans_Halen_V1.Migrations
                 {
                     b.HasOne("Lussans_Halen_V1.Models.Dish", "DishName")
                         .WithOne("AllergyInfo")
-                        .HasForeignKey("Lussans_Halen_V1.Models.Allergy", "DishId")
+                        .HasForeignKey("Lussans_Halen_V1.Models.Allergy", "AllergyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

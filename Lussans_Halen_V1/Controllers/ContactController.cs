@@ -1,36 +1,56 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Lussans_Halen_V1.Models.Service;
+using Lussans_Halen_V1.Models.ViewModels;
+using Lussans_Halen_V1.Models;
 
 namespace Lussans_Halen_V1.Controllers
 {
     public class ContactController : Controller
     {
+        private readonly IContactService _contactService;
+
+        public ContactController(IContactService contactService)
+        {
+            _contactService = contactService;
+        }
+
+
+
         // GET: ContactController
         public ActionResult Index()
         {
-            return View();
+            return View(_contactService.All());
         }
 
-        // GET: ContactController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult PrivateIndex()
         {
-            return View();
+            return View(_contactService.All());
         }
+
 
         // GET: ContactController/Create
         public ActionResult Create()
         {
-            return View();
+            CreateContactViewModel createContact = new CreateContactViewModel();
+            return View(createContact);
         }
 
         // POST: ContactController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CreateContactViewModel createContact)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if(ModelState.IsValid && createContact != null)
+                {
+                    _contactService.Add(createContact);
+
+                    return RedirectToAction("PrivateIndex");
+                }
+
+                return View(createContact);
             }
             catch
             {
@@ -39,7 +59,7 @@ namespace Lussans_Halen_V1.Controllers
         }
 
         // GET: ContactController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
             return View();
         }
@@ -47,11 +67,40 @@ namespace Lussans_Halen_V1.Controllers
         // POST: ContactController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, CreateContactViewModel editContact)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                Contact contact = new Contact();
+
+                if(id == 0 && editContact.ContactId != 0)
+                {
+                    contact = _contactService.FindById(editContact.ContactId);
+                }
+                else
+                {
+                    contact = _contactService.FindById(id);
+                }
+                CreateContactViewModel newContact = new CreateContactViewModel();
+
+                newContact.ContactId = id;
+                newContact.ContactName = contact.ContactName;
+                newContact.ExtenedContactName = contact.ExtenedContactName;
+                newContact.PhoneNumber = contact.PhoneNumber;
+                newContact.Email = contact.Email;
+                newContact.Street = contact.Street;
+                newContact.ZipCode = contact.ZipCode;
+                newContact.City = contact.City;
+
+                if(ModelState.IsValid && editContact.ContactId != 0)
+                {
+                    id = contact.ContactId;
+                    _contactService.Edit(id,editContact);
+
+                    return RedirectToAction("PrivateIndex");
+                }
+
+                return View(newContact);
             }
             catch
             {
@@ -72,7 +121,14 @@ namespace Lussans_Halen_V1.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _contactService.Remove(id);
+
+                }
+                
+
+                return RedirectToAction("PrivateIndex");
             }
             catch
             {

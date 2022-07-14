@@ -1,11 +1,12 @@
 ﻿@model CreateContactViewModel;
-@{
-    ViewData["Title"] = "Contact - Add new Contact";
-}
-<h1>Kontakt information</h1>
 
-<form asp-action="Create" method="post">
+
+<h1>Ändra i Kontakter</h1>
+
+<form asp-Controller = "Contact" asp-action="Edit" method="post">
     
+    <input type="hidden" asp-for="ContactId" onfocus="this.value=''" value="@Model.ContactId"/>
+   
 
     <label asp-for="ContactName">Namn:</label>
     <input asp-for="ContactName" onfocus="this.value='@Model.ContactName'" value="@Model.ContactName" type="text" class="form-control"/>
@@ -42,7 +43,9 @@
     <span asp-validation-for="City"></span>
     <br>
 
-    <button type="submit" class="btn btn-outline-dark">Lägg till kontakt info</button>
+    
+
+    <button type="submit" class="btn btn-outline-dark">Ändra i kontakt</button>
 
     
 </form>

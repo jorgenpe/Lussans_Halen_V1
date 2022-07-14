@@ -89,7 +89,8 @@ namespace Lussans_Halen_V1.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DishName = table.Column<string>(nullable: true),
                     DishPrice = table.Column<decimal>(nullable: false),
-                    MenuTyp = table.Column<string>(nullable: true)
+                    MenuTyp = table.Column<string>(nullable: true),
+                    AllergyId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -248,18 +249,17 @@ namespace Lussans_Halen_V1.Migrations
                 name: "Allergies",
                 columns: table => new
                 {
-                    AllergyId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AllergyId = table.Column<int>(nullable: false),
                     AllergyInfoName = table.Column<string>(nullable: true),
                     AllergyInfo = table.Column<string>(nullable: true),
-                    DishId = table.Column<int>(nullable: false)
+                    DishId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Allergies", x => x.AllergyId);
                     table.ForeignKey(
-                        name: "FK_Allergies_Dishes_DishId",
-                        column: x => x.DishId,
+                        name: "FK_Allergies_Dishes_AllergyId",
+                        column: x => x.AllergyId,
                         principalTable: "Dishes",
                         principalColumn: "DishId",
                         onDelete: ReferentialAction.Cascade);
@@ -312,12 +312,6 @@ namespace Lussans_Halen_V1.Migrations
                         principalColumn: "WeekMenuId",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Allergies_DishId",
-                table: "Allergies",
-                column: "DishId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

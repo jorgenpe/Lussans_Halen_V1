@@ -34,7 +34,7 @@ namespace Lussans_Halen_V1.Models.Service
 
         public bool Edit(int id, CreateAllergyViewModel allergy)
         {
-            Allergy _allergy = new Allergy();
+            Allergy _allergy = _allergyRepo.Read(id);
 
             _allergy.AllergyId = id;
             _allergy.AllergyInfoName = allergy.AllergyInfoName;
