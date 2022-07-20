@@ -17,7 +17,7 @@ namespace Lussans_Halen_V1.Models.ViewModels
         [Required]
         public decimal DishPrice { get; set; }
         [Required]
-        public string MenuTyp { get; set; }
+        public MenuType MenuType { get; set; }
 
 
         public int AccessoriesId { get; set; }
@@ -27,6 +27,8 @@ namespace Lussans_Halen_V1.Models.ViewModels
         public int AllergyId { get; set; }
         //public string AllergyInfo { get; set; }
         public Allergy AllergyInfo { get; set; }
+
+        public List<int> ListAccessoriesId { get; set; }
 
         public List<Accessory> AccessoriesList { get; set; }
 

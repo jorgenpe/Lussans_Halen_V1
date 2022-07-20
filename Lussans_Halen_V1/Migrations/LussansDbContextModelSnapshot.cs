@@ -111,16 +111,15 @@ namespace Lussans_Halen_V1.Migrations
             modelBuilder.Entity("Lussans_Halen_V1.Models.Allergy", b =>
                 {
                     b.Property<int>("AllergyId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AllergyInfo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AllergyInfoName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DishId")
-                        .HasColumnType("int");
 
                     b.HasKey("AllergyId");
 
@@ -166,9 +165,6 @@ namespace Lussans_Halen_V1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AllergyId")
-                        .HasColumnType("int");
 
                     b.Property<string>("DishName")
                         .HasColumnType("nvarchar(max)");
@@ -398,15 +394,6 @@ namespace Lussans_Halen_V1.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Lussans_Halen_V1.Models.Allergy", b =>
-                {
-                    b.HasOne("Lussans_Halen_V1.Models.Dish", "DishName")
-                        .WithOne("AllergyInfo")
-                        .HasForeignKey("Lussans_Halen_V1.Models.Allergy", "AllergyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lussans_Halen_V1.Models.DishAccessory", b =>

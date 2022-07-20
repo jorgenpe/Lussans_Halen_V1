@@ -16,8 +16,8 @@ namespace Lussans_Halen_V1.Models
         public string AllergyInfoName { get; set; }
         public string AllergyInfo { get; set; }
 
-        //[ForeignKey("Dish")]
+        /*[ForeignKey("Dish")]
         public int? DishId { get; set; }
-        public virtual Dish DishName { get; set; }
+        public virtual Dish DishName { get; set; }*/
     }
 }

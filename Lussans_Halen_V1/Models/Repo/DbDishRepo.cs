@@ -18,6 +18,7 @@ namespace Lussans_Halen_V1.Models.Repo
         {
             _lussansDbContext.Add(dish);
             _lussansDbContext.SaveChanges();
+            dish.DishId = _lussansDbContext.Dishes.Max(Item => Item.DishId);
 
             return dish;
         }

@@ -16,7 +16,8 @@ namespace Lussans_Halen_V1.Models.Service
         public Allergy Add(CreateAllergyViewModel allergy)
         {
             Allergy _allergy = new Allergy() { AllergyId = 0, AllergyInfoName = allergy.AllergyInfoName, AllergyInfo = allergy.AllergyInfo,
-                DishId = allergy.DishId, DishName = allergy.DishName };
+                //DishId = allergy.DishId, DishName = allergy.DishName 
+            };
 
             _allergyRepo.Create(_allergy);
 
@@ -39,8 +40,8 @@ namespace Lussans_Halen_V1.Models.Service
             _allergy.AllergyId = id;
             _allergy.AllergyInfoName = allergy.AllergyInfoName;
             _allergy.AllergyInfo = allergy.AllergyInfo;
-            _allergy.DishId = allergy.DishId;
-            _allergy.DishName = allergy.DishName;
+            //_allergy.DishId = allergy.DishId;
+            //_allergy.DishName = allergy.DishName;
 
             return _allergyRepo.Update(_allergy);
         }
@@ -61,10 +62,10 @@ namespace Lussans_Halen_V1.Models.Service
 
             foreach(Allergy allergy in _allergyRepo.Read())
             {
-                if(allergy.DishName.DishName == search) 
+                /*if(allergy.DishName.DishName == search) 
                 { 
                     _allergies.Add(allergy); 
-                }else if(allergy.AllergyInfoName == search) 
+                }else*/ if(allergy.AllergyInfoName == search) 
                 { 
                     _allergies.Add(allergy); 
                 }

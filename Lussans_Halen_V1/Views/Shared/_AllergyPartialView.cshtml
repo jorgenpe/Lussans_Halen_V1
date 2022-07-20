@@ -3,7 +3,7 @@
 
 <div class="row">
 
-    <div class="col-sm">@Model.AllergyId</div>
+    <div class="col-sm">@Model.AllergyInfoName</div>
     <div class="col-sm">
         <form asp-Controller="Allergy" asp-action="Edit" method="post">
             <input type="hidden"  value="@Model.AllergyId" name="id"/>

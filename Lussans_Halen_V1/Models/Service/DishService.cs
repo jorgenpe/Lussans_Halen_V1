@@ -21,8 +21,8 @@ namespace Lussans_Halen_V1.Models.Service
                     DishId = 0,
                     DishName = dish.DishName,
                     DishPrice = dish.DishPrice,
-                    MenuTyp = dish.MenuTyp,
-                    AllergyInfo = dish.AllergyInfo
+                    MenuType = dish.MenuType,
+                    //AllergyInfo = dish.AllergyInfo
                 };
 
             foreach(Dish _Dish in _dishRepo.Read())
@@ -51,9 +51,9 @@ namespace Lussans_Halen_V1.Models.Service
             if (dish != null)
             {
                 _dish.DishName = dish.DishName;
-                _dish.MenuTyp = dish.MenuTyp;
+                _dish.MenuType = dish.MenuType;
                 _dish.DishPrice = dish.DishPrice;
-                _dish.AllergyInfo = dish.AllergyInfo;
+                //_dish.AllergyInfo = dish.AllergyInfo;
 
                 return _dishRepo.Update(_dish);
             }
