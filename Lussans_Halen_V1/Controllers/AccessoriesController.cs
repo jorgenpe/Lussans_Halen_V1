@@ -1,36 +1,60 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Lussans_Halen_V1.Models.Service;
+using Lussans_Halen_V1.Models.ViewModels;
+using Lussans_Halen_V1.Models;
 
 namespace Lussans_Halen_V1.Controllers
 {
     public class AccessoriesController : Controller
     {
+        private readonly IAccessoriesService _accessoriesService;
+
+        public AccessoriesController(IAccessoriesService accessoriesService)
+        {
+            _accessoriesService = accessoriesService;
+        }
+
+
+
         // GET: AccessoriesController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: AccessoriesController/Details/5
-        public ActionResult Details(int id)
+        // GET: AccessoriesController
+        public ActionResult PrivateIndex()
         {
             return View();
         }
 
+
         // GET: AccessoriesController/Create
         public ActionResult Create()
         {
-            return View();
+            CreateAccessoriesViewModel createAccessories = new CreateAccessoriesViewModel();
+            createAccessories.ListAccessories = _accessoriesService.All();
+
+            return View(createAccessories);
         }
 
         // POST: AccessoriesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CreateAccessoriesViewModel createAccessories)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid && createAccessories != null)
+                {
+                    _accessoriesService.Add(createAccessories);
+
+                    return RedirectToAction("Create", "Dish");
+                }
+
+
+                return View(createAccessories);
             }
             catch
             {
@@ -39,7 +63,7 @@ namespace Lussans_Halen_V1.Controllers
         }
 
         // GET: AccessoriesController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
             return View();
         }
@@ -60,7 +84,7 @@ namespace Lussans_Halen_V1.Controllers
         }
 
         // GET: AccessoriesController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
             return View();
         }
@@ -72,7 +96,12 @@ namespace Lussans_Halen_V1.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+
+
+                _accessoriesService.Remove(id);
+               
+
+                return RedirectToAction("Create", "Dish");
             }
             catch
             {

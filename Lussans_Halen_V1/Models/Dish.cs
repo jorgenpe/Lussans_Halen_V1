@@ -15,7 +15,7 @@ namespace Lussans_Halen_V1.Models
         public string DishName { get; set; }
 
         [DisplayFormat(DataFormatString = "{ 0:0.##}, ApplyFormatInEditMode= true")]
-        public decimal DishPrice { get; set; }
+        public double DishPrice { get; set; }
         public MenuType MenuType { get; set; }
 
         public List<DishAccessory> DishAccessories { get; set; }

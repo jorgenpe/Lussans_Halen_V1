@@ -169,11 +169,11 @@ namespace Lussans_Halen_V1.Migrations
                     b.Property<string>("DishName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("DishPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("DishPrice")
+                        .HasColumnType("float");
 
-                    b.Property<string>("MenuTyp")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MenuType")
+                        .HasColumnType("int");
 
                     b.HasKey("DishId");
 

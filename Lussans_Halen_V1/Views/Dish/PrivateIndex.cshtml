@@ -1,0 +1,30 @@
+﻿@model List<Dish>
+ <table>
+
+     <thead>
+
+         <partial name="_ConstantDishsPartialView"/>
+
+
+     </thead>
+
+     <div class= "col-sm">
+            <a class="btn btn-outline-dark" asp-area="" asp-controller="Dish" asp-action="Create"  >Skapa ny maträtt</a>
+            
+     </div>
+     <br>
+
+     <tbody>
+         
+        @foreach (Dish dish in Model)
+        {
+            <partial name="_DishPartialView" model="dish"/>
+        }
+
+
+
+     </tbody>
+
+
+
+ </table>

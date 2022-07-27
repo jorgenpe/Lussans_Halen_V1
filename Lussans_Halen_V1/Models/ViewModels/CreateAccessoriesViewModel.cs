@@ -11,6 +11,7 @@ namespace Lussans_Halen_V1.Models.ViewModels
 
         public int AccessoriesId { get; set; }
         public string AccessoriesName { get; set; }
+        public List<Accessory> ListAccessories { get; set; }
 
         public List<Dish> dishes { get; set; }
     }

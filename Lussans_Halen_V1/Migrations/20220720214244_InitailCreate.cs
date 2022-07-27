@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lussans_Halen_V1.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitailCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -102,8 +102,8 @@ namespace Lussans_Halen_V1.Migrations
                     DishId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DishName = table.Column<string>(nullable: true),
-                    DishPrice = table.Column<decimal>(nullable: false),
-                    MenuTyp = table.Column<string>(nullable: true)
+                    DishPrice = table.Column<double>(nullable: false),
+                    MenuType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

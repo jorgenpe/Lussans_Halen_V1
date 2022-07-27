@@ -1,0 +1,26 @@
+﻿@model Dish
+
+
+<div class="row">
+
+    <div class="col-sm">@Model.DishName</div>
+    <div class="col-sm">@Model.MenuType</div>
+    <div class="col-sm">@Model.DishPrice Kr:-</div>
+
+    <div class="col-sm">
+        <form asp-Controller="Dish" asp-action="Edit" method="post">
+            <input type="hidden"  value="@Model.DishId" name="id"/>
+            <button type="submit" class= "btn btn-outline-danger">Ändra </button>
+        </form>
+    </div>
+    <div class= "col-sm">
+        <form asp-action="Delete" method="post">
+            <input type="hidden"  value="@Model.DishId" name="id"/>
+            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+        </form>                  
+    </div>
+
+
+
+
+</div>

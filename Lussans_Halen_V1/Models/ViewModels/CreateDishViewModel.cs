@@ -15,7 +15,7 @@ namespace Lussans_Halen_V1.Models.ViewModels
         [StringLength(255)]
         public string DishName { get; set; }
         [Required]
-        public decimal DishPrice { get; set; }
+        public double DishPrice { get; set; }
         [Required]
         public MenuType MenuType { get; set; }
 

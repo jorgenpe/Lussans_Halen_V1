@@ -6,7 +6,7 @@ namespace Lussans_Halen_V1.Models.Repo
 {
     public class DbDishsAccessoriesRepo : IDishsAccessoriesRepo
     {
-        private readonly LussansDbContext _LussansDbContext;
+         readonly LussansDbContext _LussansDbContext;
 
         public DbDishsAccessoriesRepo(LussansDbContext lussansDbContext)
         {

@@ -49,6 +49,10 @@ namespace Lussans_Halen_V1
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IWeekMenuRepo, DbWeekMenuRepo>();
             services.AddScoped<IWeekMenuService, WeekMenuService>();
+            services.AddScoped<IDishsAccessoriesRepo, DbDishsAccessoriesRepo>();
+            services.AddScoped<IDishsAccessoriesService, DishsAccessoriesService>();
+            services.AddScoped<IDishWeekMenuRepo, DbDishWeekMenuRepo>();
+            services.AddScoped<IDishWeekMenuService, DishWeekMenuService>();
 
             services.AddDistributedMemoryCache();
 

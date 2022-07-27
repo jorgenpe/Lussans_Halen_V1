@@ -13,3 +13,22 @@
 
     
 </form>
+
+@foreach(Accessory accessory in @Model.ListAccessories)
+{
+    <div class="row">
+
+        <div class="col-sm">@accessory.AccessoryName</div>
+    
+        <div class= "col-sm">
+            <form asp-action="Delete" method="post">
+                <input type="hidden"  value="@accessory.AccessoryId" name="id"/>
+                <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+            </form>                  
+        </div>
+
+
+
+
+    </div>
+}

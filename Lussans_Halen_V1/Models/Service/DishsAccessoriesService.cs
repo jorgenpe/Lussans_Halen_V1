@@ -6,7 +6,7 @@ using System;
 
 namespace Lussans_Halen_V1.Models.Service
 {
-    public class DishsAccessoriesService : IDishAccessoriesService
+    public class DishsAccessoriesService : IDishsAccessoriesService
     {
 
         private readonly IDishsAccessoriesRepo _DbDishsAccessoriesRepo;

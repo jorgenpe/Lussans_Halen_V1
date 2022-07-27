@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lussans_Halen_V1.Migrations
 {
     [DbContext(typeof(LussansDbContext))]
-    [Migration("20220714091409_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220720214244_InitailCreate")]
+    partial class InitailCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -171,11 +171,11 @@ namespace Lussans_Halen_V1.Migrations
                     b.Property<string>("DishName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("DishPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("DishPrice")
+                        .HasColumnType("float");
 
-                    b.Property<string>("MenuTyp")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MenuType")
+                        .HasColumnType("int");
 
                     b.HasKey("DishId");
 

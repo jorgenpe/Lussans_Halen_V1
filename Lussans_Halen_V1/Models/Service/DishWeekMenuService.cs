@@ -8,14 +8,16 @@ namespace Lussans_Halen_V1.Models.Service
 {
     public class DishWeekMenuService : IDishWeekMenuService
     {
-        private DbDishsWeekMenusRepo _dishsWeekMenusRepo;
-        private IDishService _dishService;
+        private readonly IDishWeekMenuRepo _dishWeekMenuRepo;
+        private readonly IDishService _dishService;
 
-        public DishWeekMenuService(DbDishsWeekMenusRepo dishsWeekMenusRepo, IDishService dishService)
+        public DishWeekMenuService(IDishWeekMenuRepo dishWeekMenuRepo, IDishService dishService)
         {
-            _dishsWeekMenusRepo = dishsWeekMenusRepo;
+            _dishWeekMenuRepo = dishWeekMenuRepo;
             _dishService = dishService;
         }
+
+       
 
         public DishWeekMenu Add(CreateDishsWeeksMenuViewModel dishWeeksMenu)
         {
@@ -30,18 +32,18 @@ namespace Lussans_Halen_V1.Models.Service
                 WeekMenuId = dishWeeksMenu.WeekMenuId
                 
             };
-            return _dishsWeekMenusRepo.Create(dishWeekMenu);
+            return _dishWeekMenuRepo.Create(dishWeekMenu);
         }
 
         public List<DishWeekMenu> All()
         {
-            return _dishsWeekMenusRepo.Read();
+            return _dishWeekMenuRepo.Read();
         }
   
 
         public DishWeekMenu FindById(CreateDishsWeeksMenuViewModel dishWeeksMenu)
         {
-            DishWeekMenu dishWeekMenuId = _dishsWeekMenusRepo
+            DishWeekMenu dishWeekMenuId = _dishWeekMenuRepo
                 .ReadByWeekMenuId(dishWeeksMenu.WeekMenuId)
                 .SingleOrDefault(dI => dI.DishId == dishWeeksMenu.DishId);
             return dishWeekMenuId;
@@ -49,13 +51,13 @@ namespace Lussans_Halen_V1.Models.Service
 
         public bool Remove(CreateDishsWeeksMenuViewModel deleteDishWeeksMenu)
         {
-            DishWeekMenu dishWeekMenu = _dishsWeekMenusRepo
+            DishWeekMenu dishWeekMenu = _dishWeekMenuRepo
                 .ReadByWeekMenuId(deleteDishWeeksMenu.WeekMenuId)
                 .SingleOrDefault(dI => dI.DishId == deleteDishWeeksMenu.DishId);
 
             if(dishWeekMenu != null)
             {
-                return _dishsWeekMenusRepo.Delete(dishWeekMenu);
+                return _dishWeekMenuRepo.Delete(dishWeekMenu);
             }
             return false;
         }

@@ -1,0 +1,77 @@
+﻿@model CreateDishViewModel
+
+
+
+<a class="btn btn-outline-dark" asp-area="" asp-controller="Accessories" asp-action="Create"  >Skapa/tabort tillbehör</a>
+<br>           
+ 
+
+ <form asp-action="Edit" method="post">
+
+     <input type="hidden"  value="@Model.DishId" name="id"/>
+    
+
+    <label asp-for="DishName">Maträtt namn:</label>
+    <input asp-for="DishName" onfocus="this.value='@Model.DishName'" value="@Model.DishName" type="text" defaultValue="@Model.DishName" class="form-control"/>
+    <span asp-validation-for="DishName"></span>
+    <br>
+
+    
+
+    <label asp-for="DishPrice">Pris:</label>
+    <input asp-for="DishPrice" onfocus="this.value='@Model.DishPrice'" value="@Model.DishPrice" type="number" class="form-control"/>
+    <span asp-validation-for="DishPrice"></span>
+
+    <br>
+
+
+    <label asp-for="MenuType">Vilken menytyp:</label>
+    <select asp-for="MenuType" asp-items="Html.GetEnumSelectList(typeof(MenuType))" defaultValue= "@Model.MenuType"></select>
+    <span asp-validation-for="MenuType"></span>
+    <br>
+     
+     @foreach(Accessory accessory in Model.AccessoriesList)
+        {
+        @*<partial name="_CreateDishPartialView" model="accessory"/>*@
+        var checkDefault = false;
+        @foreach(int accessoryId in Model.ListAccessoriesId)
+        {
+            if(accessoryId == accessory.AccessoryId)
+            {
+                checkDefault = true;
+            }
+
+        }
+
+            if (checkDefault == true)
+            {
+            
+        
+                <div class="row">
+                    <div class= "col-sm"> 
+                
+                        <input class="k-checkbox"  name="ListAccessoriesId" value="@accessory.AccessoryId" checked  type="checkbox" id="@accessory.AccessoryId"/>
+                        <label class="k-checkbox-label">@accessory.AccessoryName</label>
+                
+                    </div>
+
+                </div>
+            }
+             else
+            {
+                <div class="row">
+                    <div class= "col-sm"> 
+                
+                        <input class="k-checkbox" name="ListAccessoriesId" value="@accessory.AccessoryId" type="checkbox" id="@accessory.AccessoryId"/>
+                        <label class="k-checkbox-label">@accessory.AccessoryName</label>
+                
+                    </div>
+
+                </div>
+            }
+
+        }
+  
+
+     <button type="submit" class="btn btn-outline-dark">Uppdatera maträtt</button>
+ </form>

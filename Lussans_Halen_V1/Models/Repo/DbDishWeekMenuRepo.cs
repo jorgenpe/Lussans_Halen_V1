@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace Lussans_Halen_V1.Models.Repo
 {
-    public class DbDishsWeekMenusRepo : IDishWeekMenuRepo
+    public class DbDishWeekMenuRepo : IDishWeekMenuRepo
     {
 
-         private readonly LussansDbContext _lussansDbContext;
+         readonly LussansDbContext _lussansDbContext;
 
-        public DbDishsWeekMenusRepo(LussansDbContext lussansDbContext)
+        public DbDishWeekMenuRepo(LussansDbContext lussansDbContext)
         {
             _lussansDbContext = lussansDbContext;
         }
