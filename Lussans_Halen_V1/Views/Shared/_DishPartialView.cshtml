@@ -1,11 +1,11 @@
 ﻿@model Dish
 
 
-<div class="row">
+@*div class="row">*@
 
-    <div class="col-sm">@Model.DishName</div>
-    <div class="col-sm">@Model.MenuType</div>
-    <div class="col-sm">@Model.DishPrice Kr:-</div>
+    <h4 class="col-sm">@Model.DishName</h4>
+    <h5 class="col-sm">@Model.MenuType</h5>
+    <h5 class="col-sm">@Model.DishPrice Kr:-</h5>
 
     <div class="col-sm">
         <form asp-Controller="Dish" asp-action="Edit" method="post">
@@ -23,4 +23,4 @@
 
 
 
-</div>
+@*</div>*@

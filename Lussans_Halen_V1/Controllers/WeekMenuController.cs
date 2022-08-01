@@ -1,10 +1,31 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Lussans_Halen_V1.Models.Service;
+using Lussans_Halen_V1.Models.ViewModels;
+using Lussans_Halen_V1.Models;
+using System;
+using System.Linq;
+
 
 namespace Lussans_Halen_V1.Controllers
 {
     public class WeekMenuController : Controller
     {
+
+        private readonly IDishService _dishService;
+        private readonly IDishWeekMenuService _dishWeekMenuService;
+        private readonly IWeekMenuService _WeekMenuService;
+
+        public WeekMenuController(IDishService dishService, IDishWeekMenuService dishWeekMenuService, IWeekMenuService weekMenuService)
+        {
+            _dishService = dishService;
+            _dishWeekMenuService = dishWeekMenuService;
+            _WeekMenuService = weekMenuService;
+        }
+
+
+
         // GET: WeekMenuController
         public ActionResult Index()
         {

@@ -28,17 +28,43 @@ namespace Lussans_Halen_V1.Controllers
         // GET: DishController
         public ActionResult Index()
         {
-            CreateDishViewModel createDishViewModel = new CreateDishViewModel();
+            CreateDishViewModel dish = new CreateDishViewModel();
 
-            return View(_dishService.All());
+
+
+
+            dish.DishList = _dishService.All();
+            dish.AccessoriesList = _accessoriesService.All();
+            dish.DishAccessories = _dishsAccessoriesService.All();
+            return View(dish);
         }
 
+
+        // GET: DishController
+        public ActionResult CatringIndex()
+        {
+            CreateDishViewModel dish = new CreateDishViewModel();
+
+
+
+
+            dish.DishList = _dishService.All();
+            dish.AccessoriesList = _accessoriesService.All();
+            dish.DishAccessories = _dishsAccessoriesService.All();
+            return View(dish);
+        }
         // GET: DishController
         public ActionResult PrivateIndex()
         {
-            CreateDishViewModel createDishViewModel = new CreateDishViewModel(); 
+            CreateDishViewModel dish = new CreateDishViewModel();
 
-            return View(_dishService.All());
+
+
+
+            dish.DishList = _dishService.All();
+            dish.AccessoriesList = _accessoriesService.All();
+            dish.DishAccessories = _dishsAccessoriesService.All();
+            return View(dish);
         }
 
 
@@ -136,10 +162,6 @@ namespace Lussans_Halen_V1.Controllers
                 if (ModelState.IsValid && editDish != null)
                 {
 
-                   
-
-                    
-                    
 
                     foreach (int AccessoryId in listAccessories)
                     {

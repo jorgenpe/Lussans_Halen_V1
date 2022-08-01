@@ -1,4 +1,4 @@
-﻿@model List<Dish>
+﻿@model CreateDishViewModel
  <table>
 
      <thead>
@@ -16,12 +16,39 @@
 
      <tbody>
          
-        @foreach (Dish dish in Model)
+        @foreach (Dish dish in Model.DishList)
         {
+            <div class="row" >
             <partial name="_DishPartialView" model="dish"/>
+
+          
+        
+        
+            <div class="w-100"></div>
+
+            @foreach(Accessory accessory in Model.AccessoriesList)
+            {
+        
+               
+                @foreach(DishAccessory dishAccessory in Model.DishAccessories )
+                {
+                    if(dishAccessory.AccessoryId == accessory.AccessoryId && dish.DishId == dishAccessory.DishId)
+                    {
+                            <div class="m-1" >@accessory.AccessoryName </div>
+                            
+                    }
+
+                }
+
+                    @*class="col-sm"*@
+             
+
+            }
+            </div>
+        
         }
 
-
+        
 
      </tbody>
 

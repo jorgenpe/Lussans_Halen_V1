@@ -29,8 +29,12 @@ namespace Lussans_Halen_V1.Models.ViewModels
         public Allergy AllergyInfo { get; set; }
 
         public List<int> ListAccessoriesId { get; set; }
-
+        public List<DishAccessory> DishAccessories { get; set; }
+        public List<DishWeekMenu> DishWeekMenuList { get; set; }
         public List<Accessory> AccessoriesList { get; set; }
+        public List<Dish> DishList { get; set; }
+        
+        public bool IsEven { get; set; }
 
     }
 }
