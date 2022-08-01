@@ -36,6 +36,7 @@
 
                     
 
+                     <container class="col-sm">
                     @foreach(Accessory accessory in Model.AccessoriesList)
                     {
                      
@@ -44,14 +45,19 @@
                             
                             if(dishAccessory.AccessoryId == accessory.AccessoryId && dish.DishId == dishAccessory.DishId)
                             {
-                                <td>
-                                    <div class="col-sm" >@accessory.AccessoryName</div>
+                                
+                                <td >
+                                    <div class= "col-sm">
+                                    @accessory.AccessoryName
+                                    </div>
                                 </td>
+                                
                             }
                              
                         }
                    
                     }
+                    </container>
                     
                     <td>
                         <h5 class="col-sm text-right">@dish.DishPrice Kr:-</h5>
