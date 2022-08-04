@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Lussans_Halen_V1.Data;
 using System.Linq;
+using System.Globalization;
 
 namespace Lussans_Halen_V1.Models.Repo
 {
@@ -35,11 +36,19 @@ namespace Lussans_Halen_V1.Models.Repo
 
         public List<WeekMenu> Read()
         {
+            if(_lussansDbContext.WeekMenus == null)
+            {
+                return null;
+            }
             return _lussansDbContext.WeekMenus.ToList();
         }
 
         public WeekMenu Read(int id)
         {
+            if (_lussansDbContext.WeekMenus == null)
+            {
+                return null;
+            }
             return _lussansDbContext.WeekMenus.SingleOrDefault(p => p.WeekMenuId == id);
         }
 

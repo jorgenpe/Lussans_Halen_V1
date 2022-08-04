@@ -17,6 +17,7 @@ namespace Lussans_Halen_V1.Models.Repo
         public DishWeekMenu Create(DishWeekMenu dishWeekMenu)
         {
             _lussansDbContext.DishWeekMenus.Add(dishWeekMenu);
+            _lussansDbContext.SaveChanges();
             return dishWeekMenu;
         }
 

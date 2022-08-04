@@ -80,7 +80,6 @@ namespace Lussans_Halen_V1.Data
                     pl.WeekMenuId
                 });
 
-
             modelBuilder.Entity<DishWeekMenu>()
                 .HasOne(pl => pl.Dish)
                 .WithMany(p => p.DishWeekMenuList)

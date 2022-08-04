@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lussans_Halen_V1.Migrations
 {
-    public partial class InitailCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -144,7 +144,8 @@ namespace Lussans_Halen_V1.Migrations
                 {
                     WeekMenuId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    WeekNumber = table.Column<int>(maxLength: 128, nullable: false),
+                    DayPrice = table.Column<double>(maxLength: 128, nullable: false),
+                    WeekNumber = table.Column<int>(nullable: false),
                     Day = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

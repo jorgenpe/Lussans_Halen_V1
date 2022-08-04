@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Lussans_Halen_V1.Models.ViewModels;
 using System.Collections.Generic;
 using Lussans_Halen_V1.Models.Repo;
+using System.Globalization;
 
 
 namespace Lussans_Halen_V1.Models.Service
@@ -49,7 +50,7 @@ namespace Lussans_Halen_V1.Models.Service
             return _weekMenuRepo.Delete(FindById(id));
         }
 
-        public List<WeekMenu> Search(int search)
+        /*public List<WeekMenu> Search(int search)
         {
             List<WeekMenu> _WeekMenu = new List<WeekMenu>();
 
@@ -61,6 +62,6 @@ namespace Lussans_Halen_V1.Models.Service
                 }
             }
             return _WeekMenu;
-        }
+        }*/
     }
 }

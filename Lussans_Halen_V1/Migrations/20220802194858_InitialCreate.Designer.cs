@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lussans_Halen_V1.Migrations
 {
     [DbContext(typeof(LussansDbContext))]
-    [Migration("20220720214244_InitailCreate")]
-    partial class InitailCreate
+    [Migration("20220802194858_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -258,9 +258,12 @@ namespace Lussans_Halen_V1.Migrations
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
-                    b.Property<int>("WeekNumber")
-                        .HasColumnType("int")
+                    b.Property<double>("DayPrice")
+                        .HasColumnType("float")
                         .HasMaxLength(128);
+
+                    b.Property<int>("WeekNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("WeekMenuId");
 

@@ -256,9 +256,12 @@ namespace Lussans_Halen_V1.Migrations
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
-                    b.Property<int>("WeekNumber")
-                        .HasColumnType("int")
+                    b.Property<double>("DayPrice")
+                        .HasColumnType("float")
                         .HasMaxLength(128);
+
+                    b.Property<int>("WeekNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("WeekMenuId");
 

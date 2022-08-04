@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 //using Lussans_Halen_V1.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 
 namespace Lussans_Halen_V1.Models
 {
@@ -13,7 +14,7 @@ namespace Lussans_Halen_V1.Models
         [Key]
         public int WeekMenuId { get; set; }
         [Required]
-        [StringLength(128)]
+        [DisplayFormat(DataFormatString = "{ 0:0.##}, ApplyFormatInEditMode= true")]
         public double DayPrice { get; set; }    
         public int WeekNumber { get; set; }
         public Weekday Day { get; set; }

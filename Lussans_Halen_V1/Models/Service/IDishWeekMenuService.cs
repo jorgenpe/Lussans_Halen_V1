@@ -8,6 +8,7 @@ namespace Lussans_Halen_V1.Models.Service
         DishWeekMenu Add(CreateDishsWeeksMenuViewModel createDishsWeeksMenuViewMode);
         List<DishWeekMenu> All();
         DishWeekMenu FindById(CreateDishsWeeksMenuViewModel createDishsWeeksMenuViewMode);
-        bool Remove(CreateDishsWeeksMenuViewModel createDishsWeeksMenuViewMode);
+        
+        bool Remove(CreateDishsWeeksMenuViewModel deleteDishWeeksMenu);
     }
 }

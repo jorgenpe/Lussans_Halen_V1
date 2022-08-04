@@ -1,5 +1,263 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model CreateWeekMenuViewModel
+ <table>
+
+     <head>
+
+        <h1>Dagens rätt v.@Model.Week</h1> 
+        <form asp-action="PrivateIndex" method="post">
+    
+            <label asp-for="WeekNumber">Veckonummer:</label>
+            <select asp-for="WeekNumber"  asp-items="@(new SelectList(Model.Weeks))"></select>
+            <span asp-validation-for="WeekNumber"></span>
+            <button type="submit" class="btn btn-outline-dark">Ändra vecka</button>
+        </form>
+
+          <h2>Dagens pris: @Model.DayPrice</h2>
+         
+
+     </head>
+
+     <div class= "col-sm">
+            <a class="btn btn-outline-dark" asp-area="" asp-controller="WeekMenu" asp-action="Create"  >Skapa ny veckomeny</a>
+            
+     </div>
+     <br>
+
+     <body>
+
+         
+         <h3>Altenativ Måndag:</h3>
+        @foreach (WeekMenu weekMenu in Model.WeekMenuList)
+        {
+            if(weekMenu.Day == Weekday.Måndag && Model.Week == weekMenu.WeekNumber)
+            {
+                <div class="row" >
+
+                    @foreach(Dish dish in Model.DishList)
+                    {
+
+                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        {
+                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
+                            {
+                                <h5 class="col-sm">@dish.DishName</h5>
+                            }
+
+                        }
+                        
+                    }
+          
+                <div class= "col-sm">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                    </form>                  
+                </div>
+
+                </div>
+            }
+        }
+
+         <h3>Altenativ Tisdag:</h3>
+        @foreach (WeekMenu weekMenu in Model.WeekMenuList)
+        {
+            if(weekMenu.Day == Weekday.Tisdag && Model.Week == weekMenu.WeekNumber)
+            {
+                <div class="row" >
+
+                    @foreach(Dish dish in Model.DishList)
+                    {
+
+                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        {
+                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
+                            {
+                                <h5 class="col-sm">@dish.DishName</h5>
+                            }
+
+                        }
+                        
+                    }
+          
+                <div class= "col-sm">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                    </form>                  
+                </div>
+
+                </div>
+            }
+        }
+
+        <h3>Altenativ Onsdag:</h3>
+        @foreach (WeekMenu weekMenu in Model.WeekMenuList)
+        {
+            if(weekMenu.Day == Weekday.Onsdag && Model.Week == weekMenu.WeekNumber)
+            {
+                <div class="row" >
+
+                    @foreach(Dish dish in Model.DishList)
+                    {
+
+                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        {
+                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
+                            {
+                                <h5 class="col-sm">@dish.DishName</h5>
+                            }
+
+                        }
+                        
+                    }
+          
+                <div class= "col-sm">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                    </form>                  
+                </div>
+
+                </div>
+            }
+        }
+
+        <h3>Altenativ Torsdag:</h3>
+        @foreach (WeekMenu weekMenu in Model.WeekMenuList)
+        {
+            if(weekMenu.Day == Weekday.Torsdag && Model.Week == weekMenu.WeekNumber)
+            {
+                <div class="row" >
+
+                    @foreach(Dish dish in Model.DishList)
+                    {
+
+                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        {
+                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
+                            {
+                                <h5 class="col-sm">@dish.DishName</h5>
+                            }
+
+                        }
+                        
+                    }
+          
+                <div class= "col-sm">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                    </form>                  
+                </div>
+
+                </div>
+            }
+        }
+
+        <h3>Altenativ Fredag:</h3>
+        @foreach (WeekMenu weekMenu in Model.WeekMenuList)
+        {
+            if(weekMenu.Day == Weekday.Fredag && Model.Week == weekMenu.WeekNumber)
+            {
+                <div class="row" >
+
+                    @foreach(Dish dish in Model.DishList)
+                    {
+
+                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        {
+                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
+                            {
+                                <h5 class="col-sm">@dish.DishName</h5>
+                            }
+
+                        }
+                        
+                    }
+          
+                <div class= "col-sm">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
+                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                    </form>                  
+                </div>
+
+                </div>
+            }
+        }
+
+        <h3>Altenativ Lördag:</h3>
+        @foreach (WeekMenu weekMenu in Model.WeekMenuList)
+        {
+            if(weekMenu.Day == Weekday.Lördag && Model.Week == weekMenu.WeekNumber)
+            {
+                <div class="row" >
+
+                    @foreach(Dish dish in Model.DishList)
+                    {
+
+                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        {
+                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
+                            {
+                                <h5 class="col-sm">@dish.DishName</h5>
+                            }
+
+                        }
+                        
+                    }
+          
+                <div class= "col-sm">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                    </form>                  
+                </div>
+
+                </div>
+            }
+        }
+
+        <h3>Altenativ Söndag:</h3>
+        @foreach (WeekMenu weekMenu in Model.WeekMenuList)
+        {
+            if(weekMenu.Day == Weekday.Söndag && Model.Week == weekMenu.WeekNumber)
+            {
+                <div class="row" >
+
+                    @foreach(Dish dish in Model.DishList)
+                    {
+
+                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        {
+                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
+                            {
+                                <h5 class="col-sm">@dish.DishName</h5>
+                            }
+
+                        }
+                        
+                    }
+          
+                <div class= "col-sm">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                    </form>                  
+                </div>
+
+                </div>
+            }
+        }
+     </body>
+
+
+
+ </table>
+ <datalista>
+
+    @foreach(int week in Model.Weeks)
+    {
+        <option type="number" value="@week"></option>
+    }
+</datalista>

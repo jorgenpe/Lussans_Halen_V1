@@ -6,7 +6,7 @@ using Lussans_Halen_V1.Models.ViewModels;
 using Lussans_Halen_V1.Models;
 using System;
 using System.Linq;
-
+using System.Globalization;
 
 namespace Lussans_Halen_V1.Controllers
 {
@@ -15,13 +15,17 @@ namespace Lussans_Halen_V1.Controllers
 
         private readonly IDishService _dishService;
         private readonly IDishWeekMenuService _dishWeekMenuService;
-        private readonly IWeekMenuService _WeekMenuService;
+        private readonly IWeekMenuService _weekMenuService;
+        
+
+
+
 
         public WeekMenuController(IDishService dishService, IDishWeekMenuService dishWeekMenuService, IWeekMenuService weekMenuService)
         {
             _dishService = dishService;
             _dishWeekMenuService = dishWeekMenuService;
-            _WeekMenuService = weekMenuService;
+            _weekMenuService = weekMenuService;
         }
 
 
@@ -29,7 +33,67 @@ namespace Lussans_Halen_V1.Controllers
         // GET: WeekMenuController
         public ActionResult Index()
         {
-            return View();
+            DateTime date = DateTime.Now;
+            int currentWeek = ISOWeek.GetWeekOfYear(date);
+            CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
+
+
+            weekMenu.Weeks = WeekInYear();
+            weekMenu.Week = currentWeek;
+            weekMenu.DishList= _dishService.All();
+            weekMenu.DishWeekMenuList= _dishWeekMenuService.All();
+            weekMenu.WeekMenuList = _weekMenuService.All();
+            return View(weekMenu);
+        }
+
+        // GET: WeekMenuController
+        public ActionResult PrivateIndex()
+        {
+            DateTime date = DateTime.Now;
+            int currentWeek = ISOWeek.GetWeekOfYear(date);
+            CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
+
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.WeekNumber == currentWeek)
+                {
+                    weekMenu.DayPrice = menuWeek.DayPrice;
+                    break;
+                }
+            }
+            weekMenu.Weeks = WeekInYear();
+            weekMenu.Week = currentWeek;
+            weekMenu.DishList = _dishService.All();
+            weekMenu.DishWeekMenuList = _dishWeekMenuService.All();
+            weekMenu.WeekMenuList = _weekMenuService.All();
+            return View(weekMenu);
+        }
+
+        [HttpPost]
+        public ActionResult PrivateIndex(int weekNumber)
+        {
+            DateTime date = DateTime.Now;
+            int currentWeek = weekNumber;
+            
+            CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
+
+            foreach(WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if(menuWeek.WeekNumber == currentWeek )
+                {
+                    weekMenu.DayPrice = menuWeek.DayPrice;
+                    break;
+                }
+            }
+            weekMenu.Weeks = WeekInYear();
+            weekMenu.Week = currentWeek;
+            weekMenu.DishList = _dishService.All();
+            weekMenu.DishWeekMenuList = _dishWeekMenuService.All();
+            weekMenu.WeekMenuList = _weekMenuService.All();
+
+            
+
+            return View(weekMenu);
         }
 
         // GET: WeekMenuController/Details/5
@@ -41,17 +105,60 @@ namespace Lussans_Halen_V1.Controllers
         // GET: WeekMenuController/Create
         public ActionResult Create()
         {
-            return View();
+            CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
+            DateTime date = DateTime.Now;
+            int currentWeek = ISOWeek.GetWeekOfYear(date);
+
+            weekMenu.Weeks = WeekInYear();
+            weekMenu.Week = currentWeek;
+            weekMenu.DishList = _dishService.All();
+
+            return View(weekMenu);
         }
 
         // POST: WeekMenuController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CreateWeekMenuViewModel createWeekMenu)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+
+                if(ModelState.IsValid && createWeekMenu != null)
+                {
+                    
+                    WeekMenu temp = _weekMenuService.Add(createWeekMenu);
+                    
+                    foreach(int dishId in createWeekMenu.ListDishId)
+                    {
+
+                        CreateDishsWeeksMenuViewModel weekMenuDish = new CreateDishsWeeksMenuViewModel();
+
+                        weekMenuDish.DishId = dishId;
+                        weekMenuDish.WeekMenuId = temp.WeekMenuId;
+                        _dishWeekMenuService.Add(weekMenuDish);
+                    }
+                    foreach (WeekMenu weekMenu in _weekMenuService.All())
+                    {
+                        if (weekMenu.WeekNumber == temp.WeekNumber)
+                        {
+
+                            CreateWeekMenuViewModel weekMenuViewModel = new CreateWeekMenuViewModel();
+                            weekMenuViewModel.WeekNumber = weekMenu.WeekNumber;
+                            weekMenuViewModel.WeekMenuId = weekMenu.WeekMenuId;
+                            weekMenuViewModel.Day = weekMenu.Day;
+                            weekMenuViewModel.DayPrice = temp.DayPrice;
+
+
+
+                            _weekMenuService.Edit(weekMenu.WeekMenuId, weekMenuViewModel);
+                        }
+                    }
+                    return RedirectToAction("PrivateIndex");
+                }
+
+
+                return View(createWeekMenu);
             }
             catch
             {
@@ -62,17 +169,79 @@ namespace Lussans_Halen_V1.Controllers
         // GET: WeekMenuController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+
+            CreateWeekMenuViewModel editWeekMenu = new CreateWeekMenuViewModel();
+            editWeekMenu.DishList = _dishService.All();
+            editWeekMenu.Weeks = WeekInYear();
+            return View(editWeekMenu);
         }
 
         // POST: WeekMenuController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, CreateWeekMenuViewModel editWeekMenu)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                List<int> listDishs = new List<int>();
+
+                foreach (DishWeekMenu dishWeekMenu in _dishWeekMenuService.All())
+                {
+                    if(dishWeekMenu.DishId == id)
+                    {
+                        listDishs.Add(dishWeekMenu.DishId);
+                    }
+                }
+
+                WeekMenu weekMenu = new WeekMenu();
+
+                if(id ==0 && editWeekMenu.WeekMenuId != 0)
+                {
+                    weekMenu = _weekMenuService.FindById(editWeekMenu.WeekMenuId);
+                }
+                else
+                {
+                    weekMenu = _weekMenuService.FindById(id);
+                }
+
+                CreateWeekMenuViewModel newEditWeekMenu = new CreateWeekMenuViewModel();
+
+                newEditWeekMenu.WeekMenuId = id;
+                newEditWeekMenu.WeekNumber = weekMenu.WeekNumber;
+                newEditWeekMenu.Day = weekMenu.Day;
+                newEditWeekMenu.DayPrice = weekMenu.DayPrice;
+                newEditWeekMenu.DishList = _dishService.All();
+                newEditWeekMenu.ListDishId = listDishs;
+
+                if(ModelState.IsValid && editWeekMenu != null)
+                {
+
+                    foreach(int DishId in listDishs)
+                    {
+                        CreateDishsWeeksMenuViewModel dishsWeeksMenuRemove = new CreateDishsWeeksMenuViewModel();
+                        dishsWeeksMenuRemove.WeekMenuId = id;
+                        dishsWeeksMenuRemove.DishId = DishId;
+                        _dishWeekMenuService.Remove(dishsWeeksMenuRemove);
+                    }
+
+
+                    foreach (int DishId in editWeekMenu.ListDishId)
+                    {
+                        CreateDishsWeeksMenuViewModel dishsWeeksMenu = new CreateDishsWeeksMenuViewModel();
+                        dishsWeeksMenu.WeekMenuId = id;
+                        dishsWeeksMenu.DishId = DishId;
+                        _dishWeekMenuService.Add(dishsWeeksMenu);
+                    }
+
+                    editWeekMenu.ListDishId = listDishs;
+                    editWeekMenu.DishList = _dishService.All();
+                    _weekMenuService.Edit(id, editWeekMenu);
+
+                    return RedirectToAction("privateIndex");
+                }
+
+                return View(newEditWeekMenu);
+               
             }
             catch
             {
@@ -81,7 +250,7 @@ namespace Lussans_Halen_V1.Controllers
         }
 
         // GET: WeekMenuController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
             return View();
         }
@@ -89,16 +258,33 @@ namespace Lussans_Halen_V1.Controllers
         // POST: WeekMenuController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+
+                if (ModelState.IsValid)
+                {
+                    _weekMenuService.Remove(id);
+                }
+                return RedirectToAction("PrivateIndex");
             }
             catch
             {
                 return View();
             }
+        }
+
+        private List<int> WeekInYear()
+        {
+            List<int> listWeeksInYear = new List<int>();
+
+            for (int i = 0; i < ISOWeek.GetWeeksInYear(DateTime.Now.Year); i++)
+            {
+                listWeeksInYear.Add(i+1);
+            }
+
+            return listWeeksInYear;
         }
     }
 }

@@ -1,5 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model CreateWeekMenuViewModel
+
+
+ <form asp-action="Create" method="post">
+    
+
+    <label asp-for="DayPrice">Maträtt pris:</label>
+    <input asp-for="DayPrice" onfocus="this.value='@Model.DayPrice'" value="@Model.DayPrice" type="number" class="form-control"/>
+    <span asp-validation-for="DayPrice"></span>
+    <br>
+
+    
+    <label asp-for="WeekNumber">Veckonummer:</label>
+    <select asp-for="WeekNumber"  asp-items="@(new SelectList(Model.Weeks))"></select>
+    <span asp-validation-for="WeekNumber"></span>
+
+    <br>
+
+
+    <label asp-for="Day">Vilken dag:</label>
+    <select asp-for="Day" asp-items="Html.GetEnumSelectList(typeof(Weekday))"></select>
+    <span asp-validation-for="Day"></span>
+    <br>
+
+    
+
+    
+     @foreach(Dish dish in Model.DishList)
+        {
+            if(dish.MenuType.ToString() != "CateringMenu"){
+                <div class="row">
+                <div class= "col-sm"> 
+                
+                    <input class="k-checkbox" name="ListDishId" value="@dish.DishId" type="checkbox" id="@dish.DishId"/>
+                    <label class="k-checkbox-label">@dish.DishName</label>
+                
+                </div>
+                </div> 
+            }
+        }
+  
+
+     <button type="submit" class="btn btn-outline-dark">Lägg till maträtt</button>
+ </form>
+
+ <datalista>
+
+    @foreach(int week in Model.Weeks)
+    {
+        <option type="number" value="@week"></option>
+    }
+</datalista>
