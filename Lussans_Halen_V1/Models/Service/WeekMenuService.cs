@@ -33,11 +33,18 @@ namespace Lussans_Halen_V1.Models.Service
 
         public bool Edit(int id, CreateWeekMenuViewModel weekMenu)
         {
-            WeekMenu _WeekMenu = new WeekMenu() { WeekMenuId = id, DayPrice = weekMenu.DayPrice, WeekNumber = weekMenu.WeekNumber, Day = weekMenu.Day };
+            WeekMenu _weekMenu = _weekMenuRepo.Read(id);
+            if(weekMenu != null)
+            {
+                
+                _weekMenu.DayPrice = weekMenu.DayPrice;
+                _weekMenu.WeekNumber = weekMenu.WeekNumber;
+                _weekMenu.Day = weekMenu.Day;
+                return _weekMenuRepo.Update(_weekMenu);
 
-
-            return _weekMenuRepo.Update(_WeekMenu);
-
+            }
+            return false;
+         
         }
 
         public WeekMenu FindById(int id)

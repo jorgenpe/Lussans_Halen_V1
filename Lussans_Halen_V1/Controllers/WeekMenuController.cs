@@ -37,12 +37,46 @@ namespace Lussans_Halen_V1.Controllers
             int currentWeek = ISOWeek.GetWeekOfYear(date);
             CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
 
-
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.WeekNumber == currentWeek)
+                {
+                    weekMenu.DayPrice = menuWeek.DayPrice;
+                    break;
+                }
+            }
             weekMenu.Weeks = WeekInYear();
             weekMenu.Week = currentWeek;
-            weekMenu.DishList= _dishService.All();
-            weekMenu.DishWeekMenuList= _dishWeekMenuService.All();
+            weekMenu.DishList = _dishService.All();
+            weekMenu.DishWeekMenuList = _dishWeekMenuService.All();
             weekMenu.WeekMenuList = _weekMenuService.All();
+            return View(weekMenu);
+        }
+
+        [HttpPost]
+        public ActionResult Index(int weekNumber)
+        {
+            DateTime date = DateTime.Now;
+            int currentWeek = weekNumber;
+
+            CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
+
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.WeekNumber == currentWeek)
+                {
+                    weekMenu.DayPrice = menuWeek.DayPrice;
+                    break;
+                }
+            }
+            weekMenu.Weeks = WeekInYear();
+            weekMenu.Week = currentWeek;
+            weekMenu.DishList = _dishService.All();
+            weekMenu.DishWeekMenuList = _dishWeekMenuService.All();
+            weekMenu.WeekMenuList = _weekMenuService.All();
+
+
+
             return View(weekMenu);
         }
 
@@ -105,14 +139,23 @@ namespace Lussans_Halen_V1.Controllers
         // GET: WeekMenuController/Create
         public ActionResult Create()
         {
-            CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
             DateTime date = DateTime.Now;
             int currentWeek = ISOWeek.GetWeekOfYear(date);
+            CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
 
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.WeekNumber == currentWeek)
+                {
+                    weekMenu.DayPrice = menuWeek.DayPrice;
+                    break;
+                }
+            }
             weekMenu.Weeks = WeekInYear();
             weekMenu.Week = currentWeek;
             weekMenu.DishList = _dishService.All();
-
+            weekMenu.DishWeekMenuList = _dishWeekMenuService.All();
+            weekMenu.WeekMenuList = _weekMenuService.All();
             return View(weekMenu);
         }
 
@@ -132,6 +175,15 @@ namespace Lussans_Halen_V1.Controllers
                     foreach(int dishId in createWeekMenu.ListDishId)
                     {
 
+                        foreach(DishWeekMenu dishWeek in _dishWeekMenuService.All())
+                        {
+                            
+                            if (dishWeek.DishId == dishId && _weekMenuService.FindById(dishWeek.WeekMenuId).Day == temp.Day && _weekMenuService.FindById(dishWeek.WeekMenuId).WeekNumber == temp.WeekNumber)
+                            {
+                                _weekMenuService.Remove(temp.WeekMenuId);
+                                return RedirectToAction("PrivateIndex");
+                            }
+                        }
                         CreateDishsWeeksMenuViewModel weekMenuDish = new CreateDishsWeeksMenuViewModel();
 
                         weekMenuDish.DishId = dishId;
@@ -148,7 +200,7 @@ namespace Lussans_Halen_V1.Controllers
                             weekMenuViewModel.WeekMenuId = weekMenu.WeekMenuId;
                             weekMenuViewModel.Day = weekMenu.Day;
                             weekMenuViewModel.DayPrice = temp.DayPrice;
-
+                            
 
 
                             _weekMenuService.Edit(weekMenu.WeekMenuId, weekMenuViewModel);

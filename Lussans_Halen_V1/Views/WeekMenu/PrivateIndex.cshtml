@@ -7,9 +7,9 @@
         <form asp-action="PrivateIndex" method="post">
     
             <label asp-for="WeekNumber">Veckonummer:</label>
-            <select asp-for="WeekNumber"  asp-items="@(new SelectList(Model.Weeks))"></select>
+            <select class="m-1" asp-for="WeekNumber"  asp-items="@(new SelectList(Model.Weeks))"  ></select>
             <span asp-validation-for="WeekNumber"></span>
-            <button type="submit" class="btn btn-outline-dark">Ändra vecka</button>
+            <button   type="submit" class="btn btn-outline-dark m-1">Ändra vecka</button>
         </form>
 
           <h2>Dagens pris: @Model.DayPrice</h2>
@@ -26,7 +26,7 @@
      <body>
 
          
-         <h3>Altenativ Måndag:</h3>
+         <h3>Måndag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
         {
             if(weekMenu.Day == Weekday.Måndag && Model.Week == weekMenu.WeekNumber)
@@ -48,8 +48,8 @@
                     }
           
                 <div class= "col-sm">
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                    <form asp-Controller="WeekMenu" asp-action="Delete" method="post">
+                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
                         <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
                     </form>                  
                 </div>
@@ -58,7 +58,7 @@
             }
         }
 
-         <h3>Altenativ Tisdag:</h3>
+         <h3>Tisdag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
         {
             if(weekMenu.Day == Weekday.Tisdag && Model.Week == weekMenu.WeekNumber)
@@ -81,7 +81,7 @@
           
                 <div class= "col-sm">
                     <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
                         <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
                     </form>                  
                 </div>
@@ -90,7 +90,7 @@
             }
         }
 
-        <h3>Altenativ Onsdag:</h3>
+        <h3> Onsdag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
         {
             if(weekMenu.Day == Weekday.Onsdag && Model.Week == weekMenu.WeekNumber)
@@ -113,7 +113,7 @@
           
                 <div class= "col-sm">
                     <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
                         <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
                     </form>                  
                 </div>
@@ -122,7 +122,7 @@
             }
         }
 
-        <h3>Altenativ Torsdag:</h3>
+        <h3>Torsdag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
         {
             if(weekMenu.Day == Weekday.Torsdag && Model.Week == weekMenu.WeekNumber)
@@ -145,7 +145,7 @@
           
                 <div class= "col-sm">
                     <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
                         <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
                     </form>                  
                 </div>
@@ -154,7 +154,7 @@
             }
         }
 
-        <h3>Altenativ Fredag:</h3>
+        <h3> Fredag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
         {
             if(weekMenu.Day == Weekday.Fredag && Model.Week == weekMenu.WeekNumber)
@@ -186,7 +186,7 @@
             }
         }
 
-        <h3>Altenativ Lördag:</h3>
+        <h3> Lördag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
         {
             if(weekMenu.Day == Weekday.Lördag && Model.Week == weekMenu.WeekNumber)
@@ -209,7 +209,7 @@
           
                 <div class= "col-sm">
                     <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
                         <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
                     </form>                  
                 </div>
@@ -218,7 +218,7 @@
             }
         }
 
-        <h3>Altenativ Söndag:</h3>
+        <h3>Söndag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
         {
             if(weekMenu.Day == Weekday.Söndag && Model.Week == weekMenu.WeekNumber)
@@ -241,7 +241,7 @@
           
                 <div class= "col-sm">
                     <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@Model.WeekMenuId" name="id"/>
+                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
                         <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
                     </form>                  
                 </div>
@@ -258,6 +258,9 @@
 
     @foreach(int week in Model.Weeks)
     {
-        <option type="number" value="@week"></option>
+        
+           <option type="number" value="@week"></option> 
+        
+        
     }
 </datalista>

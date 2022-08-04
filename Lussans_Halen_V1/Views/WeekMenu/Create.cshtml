@@ -5,13 +5,13 @@
     
 
     <label asp-for="DayPrice">Maträtt pris:</label>
-    <input asp-for="DayPrice" onfocus="this.value='@Model.DayPrice'" value="@Model.DayPrice" type="number" class="form-control"/>
+    <input asp-for="DayPrice" onfocus="this.value='@Model.DayPrice'" value="@Model.DayPrice" type="number" class="form-control" defaultValue="@Model.DayPrice"/>
     <span asp-validation-for="DayPrice"></span>
     <br>
 
     
     <label asp-for="WeekNumber">Veckonummer:</label>
-    <select asp-for="WeekNumber"  asp-items="@(new SelectList(Model.Weeks))"></select>
+    <select asp-for="WeekNumber"  asp-items="@(new SelectList(Model.Weeks))" ></select>
     <span asp-validation-for="WeekNumber"></span>
 
     <br>
