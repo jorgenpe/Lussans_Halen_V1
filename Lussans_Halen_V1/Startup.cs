@@ -53,6 +53,8 @@ namespace Lussans_Halen_V1
             services.AddScoped<IDishsAccessoriesService, DishsAccessoriesService>();
             services.AddScoped<IDishWeekMenuRepo, DbDishWeekMenuRepo>();
             services.AddScoped<IDishWeekMenuService, DishWeekMenuService>();
+            services.AddScoped<IOpenTimesRepo, DbOpenTimesRepo>();
+            services.AddScoped<IOpenTimesService, OpenTimesService>();
 
             services.AddDistributedMemoryCache();
 

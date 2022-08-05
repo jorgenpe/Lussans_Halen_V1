@@ -22,6 +22,11 @@
     <span asp-validation-for="Day"></span>
     <br>
 
+    <label asp-for="DayAccessories">Skriv in vad som ingår i dagensrätt:</label>
+    <br>
+    <textarea asp-for="DayAccessories" class="form-control" rows="5" cols="50" min="0" type="text" onfocus="this.value=''" required autocomplete="off"></textarea>
+    <span asp-validation-for="DayAccessories"></span>
+    <br>
     
 
     

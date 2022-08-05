@@ -1,0 +1,31 @@
+﻿@model List<OpenTimes>
+ <table>
+
+     <thead>
+
+         <h1 class="text-center">Öppettider</h1>
+
+
+     </thead>
+
+     
+     <br>
+
+     <tbody >
+         <div class="text-center">
+            @foreach (OpenTimes openTimes in Model)
+            {
+                <div class="row">
+
+                    <div class="col-sm">@openTimes.DayTimeOption</div>
+    
+                </div>
+        }
+        </div>
+
+
+     </tbody>
+
+
+
+ </table>

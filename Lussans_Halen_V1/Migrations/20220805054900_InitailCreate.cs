@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lussans_Halen_V1.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitailCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -111,6 +111,24 @@ namespace Lussans_Halen_V1.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OpensTimes",
+                columns: table => new
+                {
+                    OpenTimesId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OpenTime = table.Column<DateTime>(nullable: false),
+                    CloseTime = table.Column<DateTime>(nullable: false),
+                    DayMenuTimeStart = table.Column<DateTime>(nullable: false),
+                    DayMenuTimeEnd = table.Column<DateTime>(nullable: false),
+                    Day = table.Column<int>(nullable: false),
+                    DayTimeOption = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OpensTimes", x => x.OpenTimesId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
@@ -144,9 +162,10 @@ namespace Lussans_Halen_V1.Migrations
                 {
                     WeekMenuId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DayPrice = table.Column<double>(maxLength: 128, nullable: false),
+                    DayPrice = table.Column<double>(nullable: false),
                     WeekNumber = table.Column<int>(nullable: false),
-                    Day = table.Column<int>(nullable: false)
+                    Day = table.Column<int>(nullable: false),
+                    DayAccessories = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -385,6 +404,9 @@ namespace Lussans_Halen_V1.Migrations
 
             migrationBuilder.DropTable(
                 name: "DishWeekMenus");
+
+            migrationBuilder.DropTable(
+                name: "OpensTimes");
 
             migrationBuilder.DropTable(
                 name: "Reservations");

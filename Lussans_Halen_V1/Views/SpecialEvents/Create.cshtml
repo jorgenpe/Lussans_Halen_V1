@@ -11,9 +11,9 @@
     <input asp-for="SpecialEventsName" onfocus="this.value=''" min="0" required autocomplete="off" type="text" class="form-control"/>
     <span asp-validation-for="SpecialEventsName"></span>
     <br>
-    <label asp-for="SpecialEventsDiscription">Skriv in allergi information:</label>
+    <label asp-for="SpecialEventsDiscription">Skriv in evenemang information:</label>
     <br>
-    <textarea asp-for="SpecialEventsDiscription" class="form-control" rows="20" onfocus="this.value=''" type="text" ></textarea>
+    <textarea asp-for="SpecialEventsDiscription" class="form-control" rows="20" required onfocus="this.value=''" type="text" ></textarea>
     <span asp-validation-for="SpecialEventsDiscription"></span>
     <br>
     <button type="submit" class="btn btn-outline-dark">Lägg till evenemang</button>

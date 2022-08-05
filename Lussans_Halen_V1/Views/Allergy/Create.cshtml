@@ -8,11 +8,11 @@
     
 
     <label asp-for="AllergyInfoName">Namn:</label>
-    <input asp-for="AllergyInfoName"/>
+    <input asp-for="AllergyInfoName" required/>
     <span asp-validation-for="AllergyInfoName"></span>
 
     <label asp-for="AllergyInfo">Skriv in allergi information:</label>
-    <textarea asp-for="AllergyInfo" rows="20"  cols="100"></textarea>
+    <textarea asp-for="AllergyInfo" required rows="20"  cols="100"></textarea>
 
     
     <span asp-validation-for="AllergyInfo"></span>

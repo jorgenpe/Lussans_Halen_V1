@@ -29,7 +29,7 @@
 
           <h2>Dagens pris: @Model.DayPrice Kr</h2>
          
-
+          
      </head>
 
      
@@ -37,6 +37,8 @@
 
      <body>
 
+         <p>@Model.DayAccessories</p>
+         <br>
          
          <h3>Måndag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)

@@ -210,6 +210,36 @@ namespace Lussans_Halen_V1.Migrations
                     b.ToTable("DishWeekMenus");
                 });
 
+            modelBuilder.Entity("Lussans_Halen_V1.Models.OpenTimes", b =>
+                {
+                    b.Property<int>("OpenTimesId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CloseTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DayMenuTimeEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DayMenuTimeStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DayTimeOption")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OpenTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("OpenTimesId");
+
+                    b.ToTable("OpensTimes");
+                });
+
             modelBuilder.Entity("Lussans_Halen_V1.Models.Reservation", b =>
                 {
                     b.Property<int>("ReservationId")
@@ -256,9 +286,11 @@ namespace Lussans_Halen_V1.Migrations
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
+                    b.Property<string>("DayAccessories")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("DayPrice")
-                        .HasColumnType("float")
-                        .HasMaxLength(128);
+                        .HasColumnType("float");
 
                     b.Property<int>("WeekNumber")
                         .HasColumnType("int");

@@ -42,6 +42,7 @@ namespace Lussans_Halen_V1.Controllers
                 if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+                    weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
             }
@@ -66,6 +67,7 @@ namespace Lussans_Halen_V1.Controllers
                 if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+                    weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
             }
@@ -92,6 +94,7 @@ namespace Lussans_Halen_V1.Controllers
                 if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+                    weekMenu.DayAccessories= menuWeek.DayAccessories;
                     break;
                 }
             }
@@ -116,6 +119,7 @@ namespace Lussans_Halen_V1.Controllers
                 if(menuWeek.WeekNumber == currentWeek )
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+                    weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
             }
@@ -148,6 +152,7 @@ namespace Lussans_Halen_V1.Controllers
                 if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+                    weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
             }
@@ -200,6 +205,7 @@ namespace Lussans_Halen_V1.Controllers
                             weekMenuViewModel.WeekMenuId = weekMenu.WeekMenuId;
                             weekMenuViewModel.Day = weekMenu.Day;
                             weekMenuViewModel.DayPrice = temp.DayPrice;
+                            weekMenuViewModel.DayAccessories = temp.DayAccessories;
                             
 
 
@@ -264,6 +270,7 @@ namespace Lussans_Halen_V1.Controllers
                 newEditWeekMenu.DayPrice = weekMenu.DayPrice;
                 newEditWeekMenu.DishList = _dishService.All();
                 newEditWeekMenu.ListDishId = listDishs;
+                newEditWeekMenu.DayAccessories = weekMenu.DayAccessories;
 
                 if(ModelState.IsValid && editWeekMenu != null)
                 {

@@ -1,0 +1,20 @@
+﻿@model CreateOpenTimesViewModel;
+
+<h1>Öppet tider</h1>
+
+
+<form asp-Controller="OpenTimes" asp-action="Create" method="post">
+    
+
+    
+
+    <label asp-for="DayTimeOption">Skriv in öppet tider:</label>
+    <br>
+    <textarea asp-for="DayTimeOption" required rows="20"  cols="100"></textarea>
+
+    
+    <span asp-validation-for="DayTimeOption"></span>
+    <br>
+  
+    <button type="submit" class="btn btn-outline-dark">Lägg till öppet tider</button>
+</form>

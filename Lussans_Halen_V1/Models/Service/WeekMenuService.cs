@@ -20,7 +20,7 @@ namespace Lussans_Halen_V1.Models.Service
 
         public WeekMenu Add(CreateWeekMenuViewModel weekMenu)
         {
-            WeekMenu _WeekMenu = new WeekMenu() { WeekMenuId = 0, DayPrice = weekMenu.DayPrice, WeekNumber = weekMenu.WeekNumber, Day = weekMenu.Day };
+            WeekMenu _WeekMenu = new WeekMenu() { WeekMenuId = 0, DayPrice = weekMenu.DayPrice, WeekNumber = weekMenu.WeekNumber, Day = weekMenu.Day, DayAccessories = weekMenu.DayAccessories  };
 
             _weekMenuRepo.Create(_WeekMenu);
             return _WeekMenu;
@@ -40,6 +40,7 @@ namespace Lussans_Halen_V1.Models.Service
                 _weekMenu.DayPrice = weekMenu.DayPrice;
                 _weekMenu.WeekNumber = weekMenu.WeekNumber;
                 _weekMenu.Day = weekMenu.Day;
+                _weekMenu.DayAccessories = weekMenu.DayAccessories;
                 return _weekMenuRepo.Update(_weekMenu);
 
             }

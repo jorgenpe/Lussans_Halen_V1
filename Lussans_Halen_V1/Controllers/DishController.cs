@@ -89,15 +89,19 @@ namespace Lussans_Halen_V1.Controllers
                 {
                     Dish temp = _dishService.Add(createDish);
 
-                    foreach(int AccessoryId in createDish.ListAccessoriesId)
+                    if(createDish.ListAccessoriesId != null)
                     {
+                        foreach(int AccessoryId in createDish.ListAccessoriesId)
+                        {
                         
-                        CreateDishsAccessoriesViewModel dishAccessory = new CreateDishsAccessoriesViewModel();
-                        dishAccessory.AccessoryId = AccessoryId;
-                        dishAccessory.DishId = temp.DishId;
-                        _dishsAccessoriesService.Add(dishAccessory);
+                            CreateDishsAccessoriesViewModel dishAccessory = new CreateDishsAccessoriesViewModel();
+                            dishAccessory.AccessoryId = AccessoryId;
+                            dishAccessory.DishId = temp.DishId;
+                            _dishsAccessoriesService.Add(dishAccessory);
                         
-                    } 
+                        } 
+                    }
+                    
 
                     return RedirectToAction("PrivateIndex");
                 }

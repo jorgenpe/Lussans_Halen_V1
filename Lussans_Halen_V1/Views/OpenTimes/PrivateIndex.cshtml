@@ -1,0 +1,44 @@
+﻿@model List<OpenTimes>
+ <table>
+
+     <thead>
+
+         <h1>Öppettider</h1>
+
+
+     </thead>
+
+     <div class= "col-sm">
+            <a class="btn btn-outline-dark" asp-area="" asp-controller="OpenTimes" asp-action="Create"  >Skapa öppet tider</a>
+            
+     </div>
+     <br>
+
+     <tbody>
+         
+        @foreach (OpenTimes openTimes in Model)
+        {
+            <div class="row">
+
+                <div class="col-sm">@openTimes.DayTimeOption</div>
+    
+            <div class= "col-sm">
+                <form asp-action="Delete" method="post">
+                    <input type="hidden"  value="@openTimes.OpenTimesId" name="id"/>
+                    <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                </form>                  
+    </div>
+
+
+
+
+</div>
+        }
+
+
+
+     </tbody>
+
+
+
+ </table>

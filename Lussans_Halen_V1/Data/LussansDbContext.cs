@@ -30,6 +30,7 @@ namespace Lussans_Halen_V1.Data
         public DbSet<WeekMenu> WeekMenus { get; set; }
         public DbSet<DishWeekMenu> DishWeekMenus { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<OpenTimes> OpensTimes { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

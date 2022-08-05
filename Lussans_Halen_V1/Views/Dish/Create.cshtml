@@ -10,14 +10,14 @@
     
 
     <label asp-for="DishName">Maträtt namn:</label>
-    <input asp-for="DishName" onfocus="this.value='@Model.DishName'" value="@Model.DishName" type="text" class="form-control"/>
+    <input asp-for="DishName" onfocus="this.value='@Model.DishName'" value="@Model.DishName" type="text" required class="form-control"/>
     <span asp-validation-for="DishName"></span>
     <br>
 
     
 
     <label asp-for="DishPrice">Pris:</label>
-    <input asp-for="DishPrice" onfocus="this.value='@Model.DishPrice'" value="@Model.DishPrice" type="number" class="form-control"/>
+    <input asp-for="DishPrice" onfocus="this.value='@Model.DishPrice'" value="@Model.DishPrice" type="number" required class="form-control"/>
     <span asp-validation-for="DishPrice"></span>
 
     <br>
