@@ -42,6 +42,16 @@ namespace Lussans_Halen_V1.Controllers
                 if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+                    
+                    break;
+                }
+            }
+
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.DayAccessories != null)
+                {
+                    
                     weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
@@ -67,10 +77,21 @@ namespace Lussans_Halen_V1.Controllers
                 if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+                    
+                    break;
+                }
+            }
+
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.DayAccessories != null)
+                {
+
                     weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
             }
+
             weekMenu.Weeks = WeekInYear();
             weekMenu.Week = currentWeek;
             weekMenu.DishList = _dishService.All();
@@ -94,7 +115,17 @@ namespace Lussans_Halen_V1.Controllers
                 if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
-                    weekMenu.DayAccessories= menuWeek.DayAccessories;
+
+                    break;
+                }
+            }
+
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.DayAccessories != null)
+                {
+
+                    weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
             }
@@ -114,11 +145,21 @@ namespace Lussans_Halen_V1.Controllers
             
             CreateWeekMenuViewModel weekMenu = new CreateWeekMenuViewModel();
 
-            foreach(WeekMenu menuWeek in _weekMenuService.All())
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
             {
-                if(menuWeek.WeekNumber == currentWeek )
+                if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+
+                    break;
+                }
+            }
+
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.DayAccessories != null)
+                {
+
                     weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
@@ -152,6 +193,16 @@ namespace Lussans_Halen_V1.Controllers
                 if (menuWeek.WeekNumber == currentWeek)
                 {
                     weekMenu.DayPrice = menuWeek.DayPrice;
+
+                    break;
+                }
+            }
+
+            foreach (WeekMenu menuWeek in _weekMenuService.All())
+            {
+                if (menuWeek.DayAccessories != null)
+                {
+
                     weekMenu.DayAccessories = menuWeek.DayAccessories;
                     break;
                 }
@@ -211,6 +262,22 @@ namespace Lussans_Halen_V1.Controllers
 
                             _weekMenuService.Edit(weekMenu.WeekMenuId, weekMenuViewModel);
                         }
+                    }
+                    foreach (WeekMenu weekMenu in _weekMenuService.All())
+                    {
+                        
+
+                            CreateWeekMenuViewModel weekMenuViewModel = new CreateWeekMenuViewModel();
+                            weekMenuViewModel.WeekNumber = weekMenu.WeekNumber;
+                            weekMenuViewModel.WeekMenuId = weekMenu.WeekMenuId;
+                            weekMenuViewModel.Day = weekMenu.Day;
+                            weekMenuViewModel.DayPrice = weekMenu.DayPrice;
+                            weekMenuViewModel.DayAccessories = temp.DayAccessories;
+
+
+
+                            _weekMenuService.Edit(weekMenu.WeekMenuId, weekMenuViewModel);
+                        
                     }
                     return RedirectToAction("PrivateIndex");
                 }
