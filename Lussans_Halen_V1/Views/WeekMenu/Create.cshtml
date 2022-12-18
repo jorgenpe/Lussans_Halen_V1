@@ -1,21 +1,17 @@
 ﻿@model CreateWeekMenuViewModel
 
-
  <form asp-action="Create" method="post">
     
-
     <label asp-for="DayPrice">Maträtt pris:</label>
     <input asp-for="DayPrice" onfocus="this.value='@Model.DayPrice'" value="@Model.DayPrice" type="number" class="form-control" defaultValue="@Model.DayPrice"/>
     <span asp-validation-for="DayPrice"></span>
     <br>
 
-    
     <label asp-for="WeekNumber">Veckonummer:</label>
     <select asp-for="WeekNumber"  asp-items="@(new SelectList(Model.Weeks))" ></select>
     <span asp-validation-for="WeekNumber"></span>
 
     <br>
-
 
     <label asp-for="Day">Vilken dag:</label>
     <select asp-for="Day" asp-items="Html.GetEnumSelectList(typeof(Weekday))"></select>
@@ -27,8 +23,6 @@
     <textarea asp-for="DayAccessories" class="form-control" rows="5" cols="50" min="0" type="text" onfocus="this.value=''" required autocomplete="off" defaultValue="@Model.DayAccessories"></textarea>
     <span asp-validation-for="DayAccessories"></span>
     <br>
-    
-
     
      @foreach(Dish dish in Model.DishList)
         {

@@ -25,7 +25,6 @@ namespace Lussans_Halen_V1.Models.ViewModels
 
         
         public int AllergyId { get; set; }
-        //public string AllergyInfo { get; set; }
         public Allergy AllergyInfo { get; set; }
 
         public List<int> ListAccessoriesId { get; set; }

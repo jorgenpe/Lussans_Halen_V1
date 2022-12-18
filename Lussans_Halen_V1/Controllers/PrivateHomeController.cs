@@ -14,13 +14,11 @@ namespace Lussans_Halen_V1.Controllers
         private readonly UserManager<AccountPerson> _userManager;
         private readonly SignInManager<AccountPerson> _signInManager;
 
-
         public PrivateHomeController(UserManager<AccountPerson> userManager, SignInManager<AccountPerson> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
 
         [AllowAnonymous]
         [HttpGet]

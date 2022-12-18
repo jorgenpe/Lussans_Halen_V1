@@ -1,26 +1,21 @@
 ﻿@model Dish
 
+<h4 class="col-sm">@Model.DishName</h4>
+<h5 class="col-sm">@Model.MenuType</h5>
+<h5 class="col-sm">@Model.DishPrice Kr:-</h5>
 
-@*div class="row">*@
-
-    <h4 class="col-sm">@Model.DishName</h4>
-    <h5 class="col-sm">@Model.MenuType</h5>
-    <h5 class="col-sm">@Model.DishPrice Kr:-</h5>
-
-    <div class="col-sm">
-        <form asp-Controller="Dish" asp-action="Edit" method="post">
-            <input type="hidden"  value="@Model.DishId" name="id"/>
-            <button type="submit" class= "btn btn-outline-danger">Ändra </button>
-        </form>
-    </div>
-    <div class= "col-sm">
-        <form asp-action="Delete" method="post">
-            <input type="hidden"  value="@Model.DishId" name="id"/>
-            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-        </form>                  
-    </div>
+<div class="col-sm">
+    <form asp-Controller="Dish" asp-action="Edit" method="post">
+        <input type="hidden"  value="@Model.DishId" name="id"/>
+        <button type="submit" class= "btn btn-outline-danger">Ändra </button>
+    </form>
+</div>
+<div class= "col-sm">
+    <form asp-action="Delete" method="post">
+        <input type="hidden"  value="@Model.DishId" name="id"/>
+        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+    </form>                  
+</div>
 
 
 
-
-@*</div>*@

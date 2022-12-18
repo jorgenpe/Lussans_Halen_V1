@@ -15,8 +15,6 @@ namespace Lussans_Halen_V1.Controllers
             _allergyService = allergyService;
         }
 
-
-
         // GET: AllergyController
         public ActionResult Index()
         {

@@ -7,7 +7,6 @@
     
     <input type="hidden" asp-for="AllergyId" onfocus="this.value=''" value="@Model.AllergyId"/>
    
-
     <label asp-for="AllergyInfoName">Namn:</label>
     <br>
     <input asp-for="AllergyInfoName" onfocus="this.value='@Model.AllergyInfoName'" value="@Model.AllergyInfoName" type="text" class="form-control"/>
@@ -17,8 +16,6 @@
     <textarea asp-for="AllergyInfo" onfocus="this.value='@Model.AllergyInfo'" class="form-control" rows="20" type="text" value="@Model.AllergyInfo"  placeholder=""></textarea>
     <span asp-validation-for="AllergyInfo"></span>
     <br>
-
-    
 
     <button type="submit" class="btn btn-outline-dark">Ändra allergi</button>
 

@@ -15,8 +15,6 @@ namespace Lussans_Halen_V1.Controllers
             _specialEventsService = specialEventsService;
         }
 
-
-
         // GET: SpecialEventsController
         public ActionResult Index()
         {
@@ -28,8 +26,6 @@ namespace Lussans_Halen_V1.Controllers
         {
             return View(_specialEventsService.All());
         }
-
-
 
         // GET: SpecialEventsController/Create
         public ActionResult Create()
@@ -83,7 +79,6 @@ namespace Lussans_Halen_V1.Controllers
                 {
                     specialEvent = _specialEventsService.FindById(id);
                 }
-
 
                 CreateSpecialEventsViewModel newSpecialEvents = new CreateSpecialEventsViewModel();
 

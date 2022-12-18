@@ -17,8 +17,6 @@ namespace Lussans_Halen_V1.Models.Service
             _dishService = dishService;
         }
 
-       
-
         public DishWeekMenu Add(CreateDishsWeeksMenuViewModel dishWeeksMenu)
         {
             if (_dishService.FindById(dishWeeksMenu.DishId) == null)

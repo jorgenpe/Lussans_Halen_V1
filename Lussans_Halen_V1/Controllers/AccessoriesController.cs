@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Lussans_Halen_V1.Models.Service;
 using Lussans_Halen_V1.Models.ViewModels;
-using Lussans_Halen_V1.Models;
+
 
 namespace Lussans_Halen_V1.Controllers
 {
@@ -15,8 +15,6 @@ namespace Lussans_Halen_V1.Controllers
             _accessoriesService = accessoriesService;
         }
 
-
-
         // GET: AccessoriesController
         public ActionResult Index()
         {
@@ -28,7 +26,6 @@ namespace Lussans_Halen_V1.Controllers
         {
             return View();
         }
-
 
         // GET: AccessoriesController/Create
         public ActionResult Create()
@@ -52,7 +49,6 @@ namespace Lussans_Halen_V1.Controllers
 
                     return RedirectToAction("Create", "Dish");
                 }
-
 
                 return View(createAccessories);
             }
@@ -97,10 +93,8 @@ namespace Lussans_Halen_V1.Controllers
             try
             {
 
-
                 _accessoriesService.Remove(id);
                
-
                 return RedirectToAction("Create", "Dish");
             }
             catch

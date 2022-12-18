@@ -10,7 +10,6 @@ namespace Lussans_Halen_V1.Models.ViewModels
     {
 
         public int DishId { get; set; }
-        
 
         public int AccessoryId { get; set; }
         public List<int> ListAcceriesId;

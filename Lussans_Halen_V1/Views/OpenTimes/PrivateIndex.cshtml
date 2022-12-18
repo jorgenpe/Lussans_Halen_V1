@@ -5,7 +5,6 @@
 
          <h1>Öppettider</h1>
 
-
      </thead>
 
      <div class= "col-sm">
@@ -22,23 +21,16 @@
 
                 <div class="col-sm">@openTimes.DayTimeOption</div>
     
-            <div class= "col-sm">
-                <form asp-action="Delete" method="post">
-                    <input type="hidden"  value="@openTimes.OpenTimesId" name="id"/>
-                    <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-                </form>                  
-    </div>
+                <div class= "col-sm">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden"  value="@openTimes.OpenTimesId" name="id"/>
+                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                    </form>                  
+                </div>
 
-
-
-
-</div>
+            </div>
         }
 
-
-
      </tbody>
-
-
 
  </table>

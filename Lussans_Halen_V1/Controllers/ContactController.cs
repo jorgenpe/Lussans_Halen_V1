@@ -15,8 +15,6 @@ namespace Lussans_Halen_V1.Controllers
             _contactService = contactService;
         }
 
-
-
         // GET: ContactController
         public ActionResult Index()
         {
@@ -27,7 +25,6 @@ namespace Lussans_Halen_V1.Controllers
         {
             return View(_contactService.All());
         }
-
 
         // GET: ContactController/Create
         public ActionResult Create()

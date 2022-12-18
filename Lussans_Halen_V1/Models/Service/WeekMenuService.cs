@@ -57,19 +57,5 @@ namespace Lussans_Halen_V1.Models.Service
         {
             return _weekMenuRepo.Delete(FindById(id));
         }
-
-        /*public List<WeekMenu> Search(int search)
-        {
-            List<WeekMenu> _WeekMenu = new List<WeekMenu>();
-
-            foreach(WeekMenu weekMenu in _weekMenuRepo.Read())
-            {
-                if(weekMenu.WeekNumber == search) 
-                {
-                    _WeekMenu.Add(weekMenu);
-                }
-            }
-            return _WeekMenu;
-        }*/
     }
 }

@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Lussans_Halen_V1.Models.Service;
 using Lussans_Halen_V1.Models.ViewModels;
-using Lussans_Halen_V1.Models;
+
 
 namespace Lussans_Halen_V1.Controllers
 {
     
-
     public class OpenTimesController : Controller
     {
         
@@ -17,8 +16,6 @@ namespace Lussans_Halen_V1.Controllers
         {
             _openTimesService = openTimesService;
         }
-
-
 
         // GET: OpenTimesController
         public ActionResult Index()
@@ -59,7 +56,6 @@ namespace Lussans_Halen_V1.Controllers
 
                     return RedirectToAction("PrivateIndex");
                 }
-
 
                 return View(createOpenTimes);
             }

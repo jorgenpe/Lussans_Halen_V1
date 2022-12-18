@@ -69,9 +69,6 @@ namespace Lussans_Halen_V1.Data
                 }
                 userManager.AddToRoleAsync(accountPerson, role.Name).Wait();
             }
-
-
-
         }
 
         private static void ErrorMessages(IdentityResult identityResult)
@@ -84,6 +81,5 @@ namespace Lussans_Halen_V1.Data
             throw new Exception(errors);
 
         }
-
     }
 }

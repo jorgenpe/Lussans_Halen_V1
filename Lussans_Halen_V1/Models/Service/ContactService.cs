@@ -39,7 +39,6 @@ namespace Lussans_Halen_V1.Models.Service
             _contact.City = contact.City;
             _contact.Street = contact.Street;
             _contact.ZipCode = contact.ZipCode;
-            
 
             return _contactRepo.Update(_contact);
         }

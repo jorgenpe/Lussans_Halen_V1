@@ -53,7 +53,6 @@ namespace Lussans_Halen_V1.Models.Service
                 _dish.DishName = dish.DishName;
                 _dish.MenuType = dish.MenuType;
                 _dish.DishPrice = dish.DishPrice;
-                //_dish.AllergyInfo = dish.AllergyInfo;
 
                 return _dishRepo.Update(_dish);
             }

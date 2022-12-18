@@ -5,8 +5,7 @@
 <h1>Kontakt information</h1>
 
 <form asp-action="Create" method="post">
-    
-
+   
     <label asp-for="ContactName">Namn:</label>
     <input asp-for="ContactName" onfocus="this.value='@Model.ContactName'" value="@Model.ContactName" type="text" required class="form-control"/>
     <span asp-validation-for="ContactName"></span>
@@ -43,6 +42,5 @@
     <br>
 
     <button type="submit" class="btn btn-outline-dark">Lägg till kontakt info</button>
-
     
 </form>

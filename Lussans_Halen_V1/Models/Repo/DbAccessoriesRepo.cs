@@ -14,7 +14,6 @@ namespace Lussans_Halen_V1.Models.Repo
             _lussansDbContext = lussansDbContext;
         }
 
-
         public Accessory Create(Accessory accessory)
         {
             _lussansDbContext.Add(accessory);

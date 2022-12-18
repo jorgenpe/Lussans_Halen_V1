@@ -9,9 +9,7 @@
     <input asp-for="AccessoriesName"  />
     <span asp-validation-for="AccessoriesName"></span>
   
-    <button type="submit" class="btn btn-outline-dark">Lägg till tillbehör</button>
-
-    
+    <button type="submit" class="btn btn-outline-dark">Lägg till tillbehör</button> 
 </form>
 
 @foreach(Accessory accessory in @Model.ListAccessories)
@@ -26,9 +24,6 @@
                 <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
             </form>                  
         </div>
-
-
-
 
     </div>
 }

@@ -2,6 +2,6 @@
 {
     public enum MenuType
     {
-        WeekMenu, Menu, CateringMenu
+        VeckoMeny, Meny, CateringMeny
     }
 }

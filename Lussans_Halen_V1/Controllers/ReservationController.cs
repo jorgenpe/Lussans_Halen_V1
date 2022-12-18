@@ -15,8 +15,6 @@ namespace Lussans_Halen_V1.Controllers
             _reservationService = reservationService;
         }
 
-
-
         // GET: ReservationController
         public ActionResult Index()
         {
@@ -79,7 +77,6 @@ namespace Lussans_Halen_V1.Controllers
                     reservation = _reservationService.FindById(id);
                 }
                 
-
                 CreateReservationViewModel newReservation = new CreateReservationViewModel();
 
                 newReservation.ReservationId = id;

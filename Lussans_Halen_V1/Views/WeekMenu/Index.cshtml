@@ -2,14 +2,6 @@
  <table>
      <Container class="text-center">
      <head>
-        @* <form asp-action="PrivateIndex" method="post">
-    
-            <label asp-for="WeekNumber">Veckonummer:</label>
-            <select class="m-1" asp-for="WeekNumber"  asp-items="@(new SelectList(Model.Weeks))"  ></select>
-            <span asp-validation-for="WeekNumber"></span>
-            <button   type="submit" class="btn btn-outline-dark m-1">Ändra vecka</button>
-        </form>*@
-
 
         <form class="col-lg-6 offset-lg-3 " asp-action="Index" method="post">
             <div class="row justify-content-center">
@@ -22,17 +14,12 @@
         </form>
 
 
-
-
         <h1>Dagens rätt v.@Model.Week</h1> 
         
-
           <h2>Dagens pris: @Model.DayPrice Kr</h2>
          
-          
      </head>
 
-     
      <br>
 
      <body>
@@ -46,45 +33,37 @@
             if(weekMenu.Day == Weekday.Måndag && Model.Week == weekMenu.WeekNumber)
             {
                 
+                @foreach(Dish dish in Model.DishList)
+                {
 
-                    @foreach(Dish dish in Model.DishList)
+                    @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
                     {
-
-                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
                         {
-                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
-                            {
-                                <h5 class="col-sm">@dish.DishName</h5>
-                            }
-
+                            <h5 class="col-sm">@dish.DishName</h5>
                         }
-                        
-                    }
-          
+                    }                        
+                }
             }
         }
 
-         <h3>Tisdag:</h3>
+        <h3>Tisdag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
         {
             if(weekMenu.Day == Weekday.Tisdag && Model.Week == weekMenu.WeekNumber)
             {
                 
+                @foreach(Dish dish in Model.DishList)
+                {
 
-                    @foreach(Dish dish in Model.DishList)
+                    @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
                     {
-
-                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
                         {
-                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
-                            {
-                                <h5 class="col-sm">@dish.DishName</h5>
-                            }
-
+                            <h5 class="col-sm">@dish.DishName</h5>
                         }
-                        
-                    }
-          
+                    }                      
+                }          
             }
         }
 
@@ -94,20 +73,17 @@
             if(weekMenu.Day == Weekday.Onsdag && Model.Week == weekMenu.WeekNumber)
             {
                 
-                    @foreach(Dish dish in Model.DishList)
+                @foreach(Dish dish in Model.DishList)
+                {
+
+                    @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
                     {
-
-                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
                         {
-                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
-                            {
-                                <h5 class="col-sm">@dish.DishName</h5>
-                            }
-
+                            <h5 class="col-sm">@dish.DishName</h5>
                         }
-                        
-                    }
-          
+                    }                        
+                }          
             }
         }
 
@@ -116,22 +92,18 @@
         {
             if(weekMenu.Day == Weekday.Torsdag && Model.Week == weekMenu.WeekNumber)
             {
-                
+      
+                @foreach(Dish dish in Model.DishList)
+                {
 
-                    @foreach(Dish dish in Model.DishList)
+                    @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
                     {
-
-                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
                         {
-                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
-                            {
-                                <h5 class="col-sm">@dish.DishName</h5>
-                            }
-
+                            <h5 class="col-sm">@dish.DishName</h5>
                         }
-                        
-                    }
-          
+                    }                        
+                }          
             }
         }
 
@@ -140,22 +112,18 @@
         {
             if(weekMenu.Day == Weekday.Fredag && Model.Week == weekMenu.WeekNumber)
             {
-                
+            
+                @foreach(Dish dish in Model.DishList)
+                {
 
-                    @foreach(Dish dish in Model.DishList)
+                    @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
                     {
-
-                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
                         {
-                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
-                            {
-                                <h5 class="col-sm">@dish.DishName</h5>
-                            }
-
+                            <h5 class="col-sm">@dish.DishName</h5>
                         }
-                        
-                    }
-          
+                    }                        
+                }          
             }
         }
 
@@ -164,25 +132,18 @@
         {
             if(weekMenu.Day == Weekday.Lördag && Model.Week == weekMenu.WeekNumber)
             {
-                
+            
+                @foreach(Dish dish in Model.DishList)
+                {
 
-                    @foreach(Dish dish in Model.DishList)
+                    @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
                     {
-
-                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
                         {
-                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
-                            {
-                                <h5 class="col-sm">@dish.DishName</h5>
-                            }
-
+                            <h5 class="col-sm">@dish.DishName</h5>
                         }
-                        
-                    }
-          
-                
-
-                
+                    }                        
+                } 
             }
         }
 
@@ -191,21 +152,18 @@
         {
             if(weekMenu.Day == Weekday.Söndag && Model.Week == weekMenu.WeekNumber)
             {
-                
+            
+                @foreach(Dish dish in Model.DishList)
+                {
 
-                    @foreach(Dish dish in Model.DishList)
+                    @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
                     {
-
-                        @foreach(DishWeekMenu dishWeekMenu in Model.DishWeekMenuList)
+                        if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
                         {
-                            if(dishWeekMenu.DishId == dish.DishId && dishWeekMenu.WeekMenuId == weekMenu.WeekMenuId)
-                            {
-                                <h5 class="col-sm">@dish.DishName</h5>
-                            }
-
+                            <h5 class="col-sm">@dish.DishName</h5>
                         }
-                        
-                    }
+                    }                        
+                }
             }
         }
      </body>
@@ -219,7 +177,6 @@
     {
         
            <option type="number" value="@week"></option> 
-        
-        
+      
     }
 </datalista>

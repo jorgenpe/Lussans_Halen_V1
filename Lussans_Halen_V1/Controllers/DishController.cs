@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using Lussans_Halen_V1.Models.Service;
 using Lussans_Halen_V1.Models.ViewModels;
 using Lussans_Halen_V1.Models;
-using System;
-using System.Linq;
+
 
 namespace Lussans_Halen_V1.Controllers
 {
@@ -30,9 +29,6 @@ namespace Lussans_Halen_V1.Controllers
         {
             CreateDishViewModel dish = new CreateDishViewModel();
 
-
-
-
             dish.DishList = _dishService.All();
             dish.AccessoriesList = _accessoriesService.All();
             dish.DishAccessories = _dishsAccessoriesService.All();
@@ -45,9 +41,6 @@ namespace Lussans_Halen_V1.Controllers
         {
             CreateDishViewModel dish = new CreateDishViewModel();
 
-
-
-
             dish.DishList = _dishService.All();
             dish.AccessoriesList = _accessoriesService.All();
             dish.DishAccessories = _dishsAccessoriesService.All();
@@ -57,9 +50,6 @@ namespace Lussans_Halen_V1.Controllers
         public ActionResult PrivateIndex()
         {
             CreateDishViewModel dish = new CreateDishViewModel();
-
-
-
 
             dish.DishList = _dishService.All();
             dish.AccessoriesList = _accessoriesService.All();
@@ -113,20 +103,17 @@ namespace Lussans_Halen_V1.Controllers
             }
         }
 
-        // GET: DishController/Edit/5
+        // GET: DishController/Edit
         public ActionResult Edit()
         {
             CreateDishViewModel editDish = new CreateDishViewModel();
 
             editDish.AccessoriesList = _accessoriesService.All();
             
-
-
-
             return View(editDish);
         }
 
-        // POST: DishController/Edit/5
+        // POST: DishController/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CreateDishViewModel editDish)
@@ -166,12 +153,10 @@ namespace Lussans_Halen_V1.Controllers
                 if (ModelState.IsValid && editDish != null)
                 {
 
-
                     foreach (int AccessoryId in listAccessories)
                     {
                        
                         CreateDishsAccessoriesViewModel dishAccessoryRemove = new CreateDishsAccessoriesViewModel();
-
 
                         dishAccessoryRemove.AccessoryId = AccessoryId;
                         dishAccessoryRemove.DishId = id;
@@ -202,13 +187,13 @@ namespace Lussans_Halen_V1.Controllers
             }
         }
 
-        // GET: DishController/Delete/5
+        // GET: DishController/Delete
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: DishController/Delete/5
+        // POST: DishController/Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -220,7 +205,6 @@ namespace Lussans_Halen_V1.Controllers
                     _dishService.Remove(id);
 
                 }
-
 
                 return RedirectToAction("PrivateIndex");
             }

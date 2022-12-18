@@ -6,7 +6,6 @@
 
          <partial name="_ConstantCatringDishsPartialView"/>
 
-
      </thead>
      </table>
      <br>
@@ -14,28 +13,16 @@
 
  
      <body >
-        
+        @*List of all dishes for catering menu*@
         @foreach (Dish dish in Model.DishList)
         {
             <table>
             <tr style="background-color: antiquewhite ">
 
-            
-            
-                
-            @*<div classt = "row"> style="background-color:gainsboro ">*@ 
-
-              
                     <td> 
                         <h4 class="col-sm ">@dish.DishName</h4>
                     </td>
                 
-                    
-
-                    @*<div class="w-100 class=" m-1 " "></div>*@
-
-                    
-
                      <container class="col-sm">
                     @foreach(Accessory accessory in Model.AccessoriesList)
                     {
@@ -62,14 +49,10 @@
                     <td>
                         <h5 class="col-sm text-right">@dish.DishPrice Kr:-</h5>
                     </td>
-              
-            @*</div>*@
             
             </tr>  
                 
            </table> 
-        }
-
-        
+        }        
 
      </body>

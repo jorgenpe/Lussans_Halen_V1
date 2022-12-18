@@ -6,36 +6,24 @@
 
          <partial name="_ConstantDishsPartialView"/>
 
-
      </thead>
  </table>
      <br>
      <br>
-
  
      <body >
-        
+        @*List sorted by MenuType = Meny*@
         @foreach (Dish dish in Model.DishList)
         {
             <table>
             <tr style="background-color: antiquewhite ">
 
-            
-            
-                
-            @*<div classt = "row"> style="background-color:gainsboro ">*@ 
-
-                @if(dish.MenuType.ToString() == "Menu")
+                @if(dish.MenuType.ToString() == "Meny")
                 {
                     <td> 
                         <h4 class="col-sm ">@dish.DishName</h4>
                     </td>
-                
-                    
-
-                    @*<div class="w-100 class=" m-1 " "></div>*@
-
-                    
+                                    
                     <container class="col-sm">
                     @foreach(Accessory accessory in Model.AccessoriesList)
                     {
@@ -63,14 +51,11 @@
                         <h5 class="col-sm text-right">@dish.DishPrice Kr:-</h5>
                     </td>
                 }
-            @*</div>*@
             
             </tr>  
                 
            </table> 
         }
-
-        
 
      </body>
 

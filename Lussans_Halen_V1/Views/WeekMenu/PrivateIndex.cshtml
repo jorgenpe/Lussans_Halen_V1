@@ -14,7 +14,6 @@
 
           <h2>Dagens pris: @Model.DayPrice</h2>
          
-
      </head>
 
      <div class= "col-sm">
@@ -24,7 +23,6 @@
      <br>
 
      <body>
-
          
          <h3>Måndag:</h3>
         @foreach (WeekMenu weekMenu in Model.WeekMenuList)
@@ -42,17 +40,15 @@
                             {
                                 <h5 class="col-sm">@dish.DishName</h5>
                             }
-
-                        }
-                        
+                        }                        
                     }
           
-                <div class= "col-sm">
-                    <form asp-Controller="WeekMenu" asp-action="Delete" method="post">
-                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
-                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-                    </form>                  
-                </div>
+                    <div class= "col-sm">
+                        <form asp-Controller="WeekMenu" asp-action="Delete" method="post">
+                            <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
+                            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                        </form>                  
+                    </div>
 
                 </div>
             }
@@ -74,17 +70,15 @@
                             {
                                 <h5 class="col-sm">@dish.DishName</h5>
                             }
-
-                        }
-                        
+                        }                        
                     }
           
-                <div class= "col-sm">
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
-                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-                    </form>                  
-                </div>
+                    <div class= "col-sm">
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
+                            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                        </form>                  
+                    </div>
 
                 </div>
             }
@@ -106,17 +100,15 @@
                             {
                                 <h5 class="col-sm">@dish.DishName</h5>
                             }
-
-                        }
-                        
+                        }                        
                     }
           
-                <div class= "col-sm">
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
-                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-                    </form>                  
-                </div>
+                    <div class= "col-sm">
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
+                            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                        </form>                  
+                    </div>
 
                 </div>
             }
@@ -138,17 +130,15 @@
                             {
                                 <h5 class="col-sm">@dish.DishName</h5>
                             }
-
-                        }
-                        
+                        }                        
                     }
           
-                <div class= "col-sm">
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
-                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-                    </form>                  
-                </div>
+                    <div class= "col-sm">
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
+                            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                        </form>                  
+                    </div>
 
                 </div>
             }
@@ -170,17 +160,15 @@
                             {
                                 <h5 class="col-sm">@dish.DishName</h5>
                             }
-
-                        }
-                        
+                        }                        
                     }
           
-                <div class= "col-sm">
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
-                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-                    </form>                  
-                </div>
+                    <div class= "col-sm">
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
+                            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                        </form>                  
+                    </div>
 
                 </div>
             }
@@ -202,17 +190,15 @@
                             {
                                 <h5 class="col-sm">@dish.DishName</h5>
                             }
-
-                        }
-                        
+                        }                        
                     }
           
-                <div class= "col-sm">
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
-                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-                    </form>                  
-                </div>
+                    <div class= "col-sm">
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
+                            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                        </form>                  
+                    </div>
 
                 </div>
             }
@@ -234,17 +220,15 @@
                             {
                                 <h5 class="col-sm">@dish.DishName</h5>
                             }
-
-                        }
-                        
+                        }                     
                     }
           
-                <div class= "col-sm">
-                    <form asp-action="Delete" method="post">
-                        <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
-                        <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
-                    </form>                  
-                </div>
+                    <div class= "col-sm">
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden"  value="@weekMenu.WeekMenuId" name="id"/>
+                            <button type="submit" class= "btn btn-outline-danger">Ta bort </button>
+                        </form>                  
+                    </div>
 
                 </div>
             }
@@ -260,7 +244,6 @@
     {
         
            <option type="number" value="@week"></option> 
-        
-        
+   
     }
 </datalista>

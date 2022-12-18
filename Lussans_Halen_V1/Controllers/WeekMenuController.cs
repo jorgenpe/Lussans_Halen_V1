@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Lussans_Halen_V1.Models.Service;
 using Lussans_Halen_V1.Models.ViewModels;
 using Lussans_Halen_V1.Models;
 using System;
-using System.Linq;
 using System.Globalization;
 
 namespace Lussans_Halen_V1.Controllers
@@ -16,10 +15,6 @@ namespace Lussans_Halen_V1.Controllers
         private readonly IDishService _dishService;
         private readonly IDishWeekMenuService _dishWeekMenuService;
         private readonly IWeekMenuService _weekMenuService;
-        
-
-
-
 
         public WeekMenuController(IDishService dishService, IDishWeekMenuService dishWeekMenuService, IWeekMenuService weekMenuService)
         {
@@ -27,8 +22,6 @@ namespace Lussans_Halen_V1.Controllers
             _dishWeekMenuService = dishWeekMenuService;
             _weekMenuService = weekMenuService;
         }
-
-
 
         // GET: WeekMenuController
         public ActionResult Index()
@@ -97,8 +90,6 @@ namespace Lussans_Halen_V1.Controllers
             weekMenu.DishList = _dishService.All();
             weekMenu.DishWeekMenuList = _dishWeekMenuService.All();
             weekMenu.WeekMenuList = _weekMenuService.All();
-
-
 
             return View(weekMenu);
         }
@@ -227,25 +218,32 @@ namespace Lussans_Halen_V1.Controllers
                 {
                     
                     WeekMenu temp = _weekMenuService.Add(createWeekMenu);
-                    
-                    foreach(int dishId in createWeekMenu.ListDishId)
+
+                    if(createWeekMenu.ListDishId == null)
                     {
-
-                        foreach(DishWeekMenu dishWeek in _dishWeekMenuService.All())
+                        return RedirectToAction("PrivateIndex");
+                    } else 
+                    { 
+                        foreach(int dishId in createWeekMenu.ListDishId)
                         {
-                            
-                            if (dishWeek.DishId == dishId && _weekMenuService.FindById(dishWeek.WeekMenuId).Day == temp.Day && _weekMenuService.FindById(dishWeek.WeekMenuId).WeekNumber == temp.WeekNumber)
-                            {
-                                _weekMenuService.Remove(temp.WeekMenuId);
-                                return RedirectToAction("PrivateIndex");
-                            }
-                        }
-                        CreateDishsWeeksMenuViewModel weekMenuDish = new CreateDishsWeeksMenuViewModel();
 
-                        weekMenuDish.DishId = dishId;
-                        weekMenuDish.WeekMenuId = temp.WeekMenuId;
-                        _dishWeekMenuService.Add(weekMenuDish);
+                            foreach(DishWeekMenu dishWeek in _dishWeekMenuService.All())
+                            {
+                            
+                                if (dishWeek.DishId == dishId && _weekMenuService.FindById(dishWeek.WeekMenuId).Day == temp.Day && _weekMenuService.FindById(dishWeek.WeekMenuId).WeekNumber == temp.WeekNumber)
+                                {
+                                    _weekMenuService.Remove(temp.WeekMenuId);
+                                    return RedirectToAction("PrivateIndex");
+                                }
+                            }
+                            CreateDishsWeeksMenuViewModel weekMenuDish = new CreateDishsWeeksMenuViewModel();
+
+                            weekMenuDish.DishId = dishId;
+                            weekMenuDish.WeekMenuId = temp.WeekMenuId;
+                            _dishWeekMenuService.Add(weekMenuDish);
+                        }
                     }
+
                     foreach (WeekMenu weekMenu in _weekMenuService.All())
                     {
                         if (weekMenu.WeekNumber == temp.WeekNumber)
@@ -263,10 +261,10 @@ namespace Lussans_Halen_V1.Controllers
                             _weekMenuService.Edit(weekMenu.WeekMenuId, weekMenuViewModel);
                         }
                     }
+
                     foreach (WeekMenu weekMenu in _weekMenuService.All())
                     {
-                        
-
+                   
                             CreateWeekMenuViewModel weekMenuViewModel = new CreateWeekMenuViewModel();
                             weekMenuViewModel.WeekNumber = weekMenu.WeekNumber;
                             weekMenuViewModel.WeekMenuId = weekMenu.WeekMenuId;
@@ -349,7 +347,6 @@ namespace Lussans_Halen_V1.Controllers
                         dishsWeeksMenuRemove.DishId = DishId;
                         _dishWeekMenuService.Remove(dishsWeeksMenuRemove);
                     }
-
 
                     foreach (int DishId in editWeekMenu.ListDishId)
                     {
