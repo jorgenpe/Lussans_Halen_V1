@@ -1,12 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
 using Lussans_Halen_V1.Models;
 using System;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 

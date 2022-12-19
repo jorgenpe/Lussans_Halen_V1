@@ -216,15 +216,19 @@ namespace Lussans_Halen_V1.Controllers
 
                 if(ModelState.IsValid && createWeekMenu != null)
                 {
-                    
-                    WeekMenu temp = _weekMenuService.Add(createWeekMenu);
+                   // = _weekMenuService.Add(createWeekMenu)
+                    WeekMenu temp;
 
+                    // Liten bug fix
                     if(createWeekMenu.ListDishId == null)
                     {
+                        
                         return RedirectToAction("PrivateIndex");
                     } else 
-                    { 
-                        foreach(int dishId in createWeekMenu.ListDishId)
+                    {
+                        temp = _weekMenuService.Add(createWeekMenu);
+
+                        foreach (int dishId in createWeekMenu.ListDishId)
                         {
 
                             foreach(DishWeekMenu dishWeek in _dishWeekMenuService.All())
